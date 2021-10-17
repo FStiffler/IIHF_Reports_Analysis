@@ -34,3 +34,20 @@ correctNames<-function(x){
   else return(x)
   
 }
+
+# Sort variables in a meaningfull way based on championships 
+sortVariables<-function(x){
+  
+  new<-c(
+    x[1:10],
+    sort(x[!is.na(str_match(x, "WM$"))]),  # men championship top division
+    sort(x[!is.na(str_match(x, "WM(I{1,3}|IV|V|VI)$"))]),  # men championships lower divisions
+    sort(x[!is.na(str_match(x, "WM20"))]),  # U20 men championships
+    sort(x[!is.na(str_match(x, "WM18"))]),  # U18 men championships
+    sort(x[!is.na(str_match(x, "WW$"))]),  # women championship top division
+    sort(x[!is.na(str_match(x, "WW(I{1,3}|IV|V|VI)$"))]),  # men championships lower divisions
+    sort(x[!is.na(str_match(x, "WW18"))])  # U18 men championships
+  )
+  
+  return(new)
+}
