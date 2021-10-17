@@ -1,7 +1,8 @@
 # load packages
-source("dependencies.R")
+source("Ressources/dependencies.R")
+source("Ressources/helperFunctions.R")
 
-# download files from IIHF #####
+# Download files from IIHF #####
 # base URL
 baseURL<-"https://www.iihf.com/en/statichub/4823/annual-report"
 
@@ -50,3 +51,39 @@ downloadReports(URLS_final)
 # clear environment
 rm(list=ls())
 gc()
+
+
+# Extract data from reports ####
+
+# Extract entire text from pdf
+text<-pdf_text("Reports/iihf2011.pdf")
+
+# Extract player survey page as vector
+survey_page<-text[str_detect(text, "IIHF Survey of Players")][2] 
+
+# Create and clean list with each page line as separate entry
+page_list<-as.list(str_split(survey_page, "\n")[[1]])%>%  # Create list
+  str_squish%>%  # Remove excessice empty spaces between character
+  str_remove_all("(?<=\\,)\\s")%>%  # Remove empty space between participated WM's
+  str_remove_all("\\s(?=I|V)")%>%  # Remove empty spaces in front of roman numbers 
+  str_remove_all("(?<=Outdoor ).+(?=Championships)")%>%  # Only one empty space between Outdoor and Championships
+  str_replace_all("Male FemaleIndoor", "MaleRef FemaleRef Indoor")%>%  # Rename variables for extraction later
+  str_replace_all("(?<=\\s\\d{1,5})\\s(?=\\d{1,3}\\,)", " NA ")%>%  # Insert NA if not WM participation
+  lapply(correctNames)
+  
+
+  
+
+# Subset List
+header<-page_list[str_detect(page_list,"Registered")] # Header of table
+country_list<-page_list[str_detect(page_list, "\\d+\\s\\d+")] # Actual data from table 
+
+
+# Prepare header to be inserted into tibble
+header<-c("Country", as.vector(str_split(header, " ", simplify = T)))
+header[length(header)+1]<-"Population"
+
+# Tibble with data
+final_data<-tibble(x=unlist(country_list))%>%
+  separate(x, header, sep=" ")
+
