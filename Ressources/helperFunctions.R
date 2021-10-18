@@ -1,5 +1,5 @@
 # Helper function to correct country names in the page list for further processing
-correctNames<-function(x){
+correct_names<-function(x){
   
   # detect pattern "namecomponent1 namecomponent2" in front of number
   if(str_detect(x, "^[A-Za-z]+\\s[A-Za-z]+(?=\\s\\d)")){
@@ -36,7 +36,7 @@ correctNames<-function(x){
 }
 
 # Sort variables in a meaningfull way based on championships 
-sortVariables<-function(x){
+sort_variables<-function(x){
   
   new<-c(
     x[1:10],

@@ -69,7 +69,7 @@ page_list<-as.list(str_split(survey_page, "\n")[[1]])%>%  # Create list
   str_remove_all("(?<=Outdoor ).+(?=Championships)")%>%  # Only one empty space between Outdoor and Championships
   str_replace_all("Male FemaleIndoor", "MaleRefs FemaleRefs Indoor")%>%  # Rename variables for extraction later
   str_replace_all("(?<=\\s\\d{1,5})\\s(?=\\d{1,3}\\,)", " None ")%>%  # Insert NA if not WM participation
-  lapply(correctNames)
+  lapply(correct_names)
   
 # Subset List
 header<-page_list[str_detect(page_list,"Registered")] # Header of table
@@ -98,7 +98,7 @@ final_data<-data_tibble%>%
          OutdoorRinks=Outdoor)
 
 # Reorder variables based on championships
-colnames(final_data)<-sortVariables(colnames(final_data)) 
+colnames(final_data)<-sort_variables(colnames(final_data)) 
   
   
 
