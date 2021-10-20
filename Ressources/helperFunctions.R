@@ -61,7 +61,7 @@ sort_variables<-function(x){
   #' @returns Vector with ordered column names based on championship names. 
   
   new<-c(
-    x[1:10],
+    x[1:11],
     sort(x[!is.na(str_match(x, "WM$"))]),  # men championship top division
     sort(x[!is.na(str_match(x, "WM(I{1,3}|IV|V|VI)$"))]),  # men championships lower divisions
     sort(x[!is.na(str_match(x, "WM20"))]),  # U20 men championships
