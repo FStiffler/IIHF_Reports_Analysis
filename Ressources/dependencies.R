@@ -1,5 +1,5 @@
 ##### Set dependencies
-dependecies <- c("tidyverse", "rvest", "pdftools", "lubridate")
+dependecies <- c("tidyverse", "rvest", "pdftools", "lubridate", "RColorBrewer")
 
 ##### Install and load packages
 missing <- dependecies[!(dependecies %in% installed.packages()[,"Package"])]
