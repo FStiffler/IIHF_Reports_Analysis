@@ -7,14 +7,14 @@ baseURL<-"https://www.iihf.com/en/statichub/4823/annual-report"
 
 # List with all links to pdf files on IIHF webpage
 URLS<-read_html(baseURL)%>%
-  html_nodes(xpath="//div[@class='s-content']/p/a")%>%
+  html_nodes(xpath="//div[@class='s-content']/p/a[@target='_blank']")%>%
   html_attr("href")
 
 # Remove unwanted reports
 reportsToRemove<-paste0(
   c(
-    paste0("annualreport",seq(2019,year(Sys.Date()))),  # Removed annual reports from 2019 onwards (are named season summary starting in 2019)
-    paste0("fr_",c(2017,2018))  # Removed financial reports (years 2017 and 2018)
+    paste0("annualreport",seq(2019,year(Sys.Date()))),  # Removed annual reports from 2019 onwards (target reports is named season summary starting in 2019)
+    "financial_report" # Removed financial reports 
   )
   
 )
@@ -89,6 +89,7 @@ for(i in fileList){
     str_replace_all("Male FemaleIndoor", "MaleRefs FemaleRefs Indoor")%>%  # Rename variables for extraction later
     str_remove_all("(?<=\\d)\\,(?=\\d)")%>%  # Remove all commas between numbers (normally thousander separators)
     str_remove_all("(?<=\\d)\\.(?=\\d)")%>%  # Remove all points between numbers (normally thousander separators)
+    str_remove_all("(?<=\\d)\\’(?=\\d)")%>%  # Remove all aposthrophs between numbers (normally thousander separators)
     str_replace_all("(?<=\\s\\d{1,6})\\s(?=\\d{1,10}$)", " None ")%>%  # Insert None if a country has played in no championship
     str_replace_all("Under-20", "U20")%>%  
     str_replace_all("U-20", "U20")%>%
@@ -100,7 +101,7 @@ for(i in fileList){
   
   # Subset List
   header<-pageList[str_detect(pageList,"Registered")][1] # Header of table (if two pages select first header)
-  countryList<-pageList[str_detect(pageList, "\\d+\\s\\d+\\s\\d+")] # Actual data from table 
+  countryList<-pageList[str_detect(pageList, "\\D+\\s\\d+\\s\\d+\\s\\d+")] # Actual data from table 
   
   # Prepare header to be inserted into tibble
   header<-c("Country", as.vector(str_split(header, " ", simplify = T)))
