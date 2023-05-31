@@ -142,7 +142,7 @@ finalData<-bind_rows(tibbleList)%>%
 colnames(finalData)<-sort_variables(colnames(finalData)) 
   
 # Write observations to csv
-write.csv(finalData, file="IIHFSurveysCombined.csv", row.names = F)
+write.csv(finalData, file="Data/IIHFSurveysCombined.csv", row.names = F)
   
 # clear workspace
 rm(list=ls())
