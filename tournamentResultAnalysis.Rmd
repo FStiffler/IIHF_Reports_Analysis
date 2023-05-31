@@ -1,0 +1,570 @@
+---
+output: 
+  html_document:
+    css: "Ressources/style.css"
+  
+---
+
+```{r setup, include=FALSE}
+
+# load packages
+source("Ressources/dependencies.R")
+
+# load data
+d1<-read_csv("Data/SwissNationalteamGameResults.csv")
+d2<-read_csv("Data/quarterFinalResults.csv")
+
+# create color variables
+colorPalette<-brewer.pal(name="Dark2", n=8)[c(1,3,7)]
+swissRed <- "#FF0000"
+subMenu <- "#868585"
+
+
+# define textsize of plot
+small <- 6
+medium <- 8
+large <- 9
+
+```
+
+
+# Analyse zum erneuten Ausscheiden der Schweizer Eishockey Nationalmannschaft
+
+<br>
+<br>
+
+## Und jährlich grüsst das Murmeltier...
+
+Das Ausscheiden der Schweizer Eishockey Nationalmannschaft im diesjährigen WM Viertelfinal hat hierzulande heftige Reaktionen ausgelöst. Man fragt sich wie ein Team, welches die Vorrunde so dominiert hat, zum wiederholten Male im Viertelfinal scheitern konnte. Der Verband und insbesondere Patrick Fischer als Nationaltrainer werden in Frage gestellt. Angesichts dieser Sachlage ist es Zeit für eine sachliche Analyse zum Zustand der Schweizer Eishockey Nationalmannschaft. Die nachfolgende Analyse basiert auf Daten zu allen Spielen der Schweizer Nationalmannschaft an Weltmeisterschaften und Olympischen Spielen seit dem Aufstieg in die Top-Division im Jahr 1997.
+
+<br>
+
+## Nationaltrainer im Direktduell
+
+Seit dem Aufstieg haben drei Trainer die Nationalmannschaft geprägt: **Ralph Krueger**, **Sean Simpson** und **Patrick Fischer** (und ja Glen Hanlon war irgendwann auch mal noch dabei). Schauen wir uns also als Erstes die Bilanz dieser Trainer in der Übersicht mal an: 
+
+<br>
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+# create table
+trainerComparison<-d1%>%
+  filter(coach!="Glen Hanlon")%>% # remove Glen Hanlon
+  mutate(coach=as.factor(as.character(coach)))%>%
+  mutate(coach=fct_relevel(coach, "Patrick Fischer", after = 2))%>% # sort coaches chronologically
+  group_by(coach)%>%
+  summarise( # summarize result
+    period = paste0(min(year),"-",max(year)),  
+    tournaments = n_distinct(year, venue),
+    games = n(),
+    win = as.character(sum(result=="win")),
+    winPerc = paste0(100*round(sum(result=="win")/n(),2),"%"),
+    ppg = round(mean(points),2),
+    goalsForPerGame = round(mean(goals_sui), 2),
+    goalsAgainstPerGame = round(mean(goals_opp), 2)
+  )%>%
+  ungroup()%>%
+  rename(Trainer = coach, Amtszeit = period, Turniere=tournaments, Spiele=games, Siege=win, WP =winPerc, `P/G` = ppg, `GF/G`=goalsForPerGame, `GA/G`=goalsAgainstPerGame)
+
+# add footnote marker
+names(trainerComparison)[names(trainerComparison)=="WP"]<-paste0("WP",footnote_marker_number(1))
+names(trainerComparison)[names(trainerComparison)=="P/G"]<-paste0("P/G",footnote_marker_number(2))
+names(trainerComparison)[names(trainerComparison)=="GF/G"]<-paste0("GF/G",footnote_marker_number(3))
+names(trainerComparison)[names(trainerComparison)=="GA/G"]<-paste0("GA/G",footnote_marker_number(4))
+
+# print table
+trainerComparison%>%
+  kable(
+    booktabs=T,
+    escape = F,
+    caption="Turnierstatistik der Nati unterteilt nach Nationaltrainer",
+    align = "llccccccc") %>%
+  row_spec(0, background = swissRed, color = "white", bold = T)%>%  # color of header column 
+  kable_styling(full_width = T, bootstrap_options = c("striped")) %>%
+  footnote(
+    number = c("<i>Winning Percentage<br></i>", "<i>Points Per Game, Das Drei-Punkte-System wurde an der WM 2007 in Russland eingeführt. Zuvor gab es für ein Unentschieden je einen Punkt. Um die Metrik über alle Turniere vergleichbar zu machen, wurde für Weltmeisterschaften vor 2007 folgende Punktevergabe angewandt: Sieg = 3 Punkte, Unentschieden = 1.5 Punkte, Niederlage = 0 Punkte<br></i>", "<i>Goals For Per Game<br></i>", "<i>Goals Against Per Game</i>"),
+    escape = F,
+    footnote_as_chunk = T)
+
+```
+<br>
+
+Unter Ralph Krueger konnte sich die Nati dauerhaft in der Top Division festsetzen. Man gewann aber nur 38% der Spiele (`r d1%>%filter(coach=="Ralph Krueger"&result=="draw")%>%nrow()` Spiele unter Krueger endeten mit einem Unentschieden) und holte dabei 1.24 Punkte pro Spiel. Das änderte sich unter Sean Simpson, welcher mit der Nati 56% aller Spiele gewann. Patrick Fischer und Sean Simpson liegen in dieser Statistik gleich auf. Im Vergleich zu Simpson holte das Team unter Patrick Fischer jedoch mehr Punkte pro Spiel. Bei der Betrachtung der durchschnittlich pro Spiel geschossenen und erhaltenen Tore fällt auf, dass Fischer ein sehr offensives, aber defensiv dadurch auch anfälligeres Hockey spielen lässt. Die Nati schiesst mehr Tore als unter beiden Vorgängern und erhält weniger Tore als noch unter Kruege, jedoch mehr als unter Simpsons. 
+
+
+Bei der Betrachtung dieser ersten Analyse gilt es allerdings Vorsicht walten zu lassen. Bei den Olympischen Turnieren unter Ralph Krueger und Sean Simpson waren die NHL Stars noch dabei. Ab dem ersten Olympischen Turnier unter Patrick Fischer 2018 in Süd Korea war das nicht mehr der Fall. Lasst uns deshalb die gleiche Stastik mit einer weiteren Unterscheidung nach Wettkampfart nochmals anschauen:
+
+<br>
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+# create table
+trainerComparisonByEvent<-d1%>%
+  filter(coach!="Glen Hanlon")%>% # remove Glen Hanlon
+  mutate(coach=as.factor(as.character(coach)))%>%
+  mutate(coach=fct_relevel(coach, "Patrick Fischer", after = 2))%>% # sort coaches chronologically
+  group_by(event, coach)%>%
+  summarise( # summarize result
+    period = paste0(min(year),"-",max(year)),  
+    tournaments = n_distinct(year, venue),
+    games = n(),
+    win = as.character(sum(result=="win")),
+    winPerc = paste0(100*round(sum(result=="win")/n(),2),"%"),
+    ppg = as.character(round(mean(points),2)),
+    goalsForPerGame = round(mean(goals_sui), 2),
+    goalsAgainstPerGame = round(mean(goals_opp), 2)
+  )%>%
+  ungroup()%>%
+  select(-event)%>%
+  rename(Trainer = coach, Amtszeit = period, Turniere=tournaments, Spiele=games, Siege=win, WP =winPerc, `P/G` = ppg, `GF/G`=goalsForPerGame, `GA/G`=goalsAgainstPerGame)
+
+
+# print table
+trainerComparisonByEvent%>%
+  kable(
+    caption="Turnierstatistik der Nati unterteilt nach Nationaltrainer und Wettkampfart",
+    align = "llccccccc") %>%
+  kable_styling(full_width = T, bootstrap_options = c("striped")) %>%
+  row_spec(0, background = swissRed, color = "white", bold = T)%>%
+  pack_rows("Olympische Spiele", 1, 3, label_row_css = "background-color: #868585; color: #fff;")%>% # group rows and set title
+  pack_rows("Weltmeisterschaften", 4, 6, label_row_css = "background-color: #868585; color: #fff;")
+
+```
+ 
+ <br>
+ 
+Was gleich heraus sticht, Fischers Bilanz bei Olympischen Spielen ist katastrophal. Gerade mal zwei Siege aus 9 Spielen und nur 0.89 Punkte pro Spiel haben bisher heraus geschaut. Ralph Krueger und Sean Simpson waren trotz Gegner mit Star Besetzung (und mit nur einer handvoll NHL Spielern in den eigenen Reihen) deutlich erfolgreicher (aber jetzt halt auch nicht super erfolgreich). Des Weiteren haben alle drei Coaches gemeinsam, dass das Team an Olympischen Spielen eine negative Tordifferenz aufweist.
+
+Bei Weltmeisterschaften sieht die Welt jedoch ganz anders aus. Fischer gewann mit dem Team 61% aller Spiele und holte so im Schnitt 1.93 Punkte pro Spiel. Das ist mehr als 1.5 mal so viel wie unter Krueger und ebenfalls eine merkliche Differenz zu Simpson. Auch die Torausbeute kann sich sehen lassen. Im Schnitt schiesst man pro Spiel ein Tor mehr als man erhält und der in der vorherigen Analyse festgestellte Gap zwischen Simpson und Fischer bezüglich erhaltener Tore schliesst sich wieder ein bisschen. Relativierend muss jedoch gesagt werden, dass die Qualität der Schweizer Mannschaft gemessen an der Anzahl Spieler mit NHL Erfahrung im Kader stetig zugenommen hat, was Fischer in dieser Auswertung sicherlich zu Gute kommt. Dass die Werte allerdings NUR ein Resultat höherer Qualität sein sollen, wage ich zu bezweifeln. Man darf nicht vergessen, dass auch andere Nationen sich weiterentwickelt haben. Der tatsächliche Einfluss von Qualität auf die gezeigten Metriken bleibt somit eine Frage für ein andermal.  
+
+<br>
+
+<div class="midsummary">
+<p>**Zwischenfazit:**</p>
+<ul>
+<li>
+Patrick Fischer versagt trotz Abwesenheit von NHL-Spielern an Olympischen Spielen, ist dafür aber an Weltmeisterschaften erfolgreicher als seine Vorgänger</li>
+<li>Die Schweizer Nati tut sich grundsätzlich schwer an Olympischen Spielen</li>
+<li>Es ist schwierig zu sagen, zu welchem Anteil die gesteigerte Qualität der Schweizer Nati die Resultate beeinflussen</li>
+</ul>
+</div>
+
+<br>
+<br>
+
+## Äpfel und Birnen
+
+
+Für den weiteren Verlauf der Analyse werden nur noch Resultate von Weltmeisterschaften berücksichtigt. Das Fehlen von NHL Stars an Olympischen Spielen ab 2018 und eine kleine Stichprobengrösse pro Trainer machen einen Vergleich schwierig und man würde vermutlich Äpfel mit Birnen vergleichen. Zugegeben, diese Problematik ist bei Weltmeisterschaften zwar auch vorhanden, jedoch nicht im gleichen Ausmass. NHL Spieler waren schon immer bei Weltmeisterschaften dabei (auch wenn nicht immer in gleicher Menge und Qualität) und die Stichprobengrösse pro Trainer ist vertretbarer. 
+
+<br>
+<br>
+
+
+## The Big Red Round-Robin Machine?
+
+In einem IIHF [Power Ranking](https://www.iihf.com/en/events/2023/wm/news/45048/power_rankings_(5)) an der diesjährigen Weltmeisterschaft wurde die Schweizer Nati in Anspielung auf das regelmässige Viertelfinal Ausscheiden nach starken Vorrunden etwas unschmeichelhaft als "The Big Red Round-Robin Machine" bezeichnet. Was ist aber dran an dieser Aussage? Und war das eigentlich schon immer so? Schauen wir uns das Abschneiden der Nati an Weltmeisterschaften mal etwas genauer an: 
+
+<br>
+
+```{r, echo=FALSE, out.width = "100%"}
+    
+# create table with tournament information
+wcTournamentResults <- d1%>%
+  filter(coach!="Glen Hanlon")%>% # remove Glen Hanlon
+  filter(event == "wc")%>%
+  mutate(lastRound = case_when(  # define last round before termination
+        rank > 8 ~ "Vorrunde", 
+        rank <= 8 & rank > 4 ~ "Viertelfinal",
+        rank <= 4 & rank > 2 ~ "Kleiner Final",
+        rank <= 2 ~ "Final"
+        ))%>%
+      distinct(year, venue, coach, lastRound)%>%
+      group_by(coach)%>%
+      summarise(
+        total = n(),
+        first = sum(lastRound == "Vorrunde"),
+        firstPerc = round(sum(lastRound == "Vorrunde")/n(),3),
+        quarter = sum(lastRound == "Viertelfinal"),
+        quarterPerc = round(sum(lastRound == "Viertelfinal")/n(),3),
+        small = sum(lastRound == "Kleiner Final"),
+        smallPerc = round(sum(lastRound == "Kleiner Final")/n(),3),
+        final = sum(lastRound == "Final"),
+        finalPerc = round(sum(lastRound == "Final")/n(),3)
+      )%>%
+  ungroup()%>%
+  pivot_longer(cols=first:finalPerc, names_to = "round", values_to = "value")%>%
+  mutate(type = ifelse(str_detect(round, "Perc"), "relative", "absolute"))%>%
+  mutate(round = str_remove_all(round, "Perc"))%>%
+  mutate(round = as.factor(round))%>%
+  mutate(round = fct_relevel(round, c("first", "quarter", "small", "final")))%>%
+  arrange(coach, type)%>%
+  mutate(coachInfo = paste0(coach," (",total," Turniere)"))%>%  # info for legend label
+  mutate(coachInfo = as.factor(coachInfo))%>%
+  mutate(coachInfo = fct_relevel(coachInfo, "Patrick Fischer (7 Turniere)", after = 2))%>%
+  group_by(coach, round)%>%
+  mutate(label = paste0(round(value[1]), " Turnier(e) / ",100*value[2], "%"))%>%
+  mutate(label = ifelse(round=="quarter"&coach=="Ralph Krueger", paste0(label,"*"), label))%>%
+  filter(type == "relative")
+  
+
+# create plot to compare tournament results
+p1 <- ggplot(wcTournamentResults%>%filter(type=="relative"), aes(x=round, y=value, fill=coachInfo))+
+  geom_bar(stat = "identity", position = "dodge2")+
+  geom_text(aes(label = label), position = position_dodge(width = 0.9), size=medium/.pt, vjust=-1)+
+  scale_y_continuous(
+    breaks=seq(0,1,0.2),
+    labels = scales::percent,
+    limits = c(0,1),
+    expand = expansion(mult=c(0,0))
+    )+
+  scale_x_discrete(labels=c("Vorrunden-Out", "Viertelfinal-Out", "Kleiner Final", "Final"))+
+  scale_fill_manual(values=colorPalette)+
+  facet_wrap(vars(coachInfo), nrow=3)+
+  labs(
+    title="Relative Häufigkeit der maximal erreichten Turnierphase unterteilt nach Nationaltrainer",
+    caption = "* Eine Viertelfinal Runde wie man sie heute kennt wurde erst an der WM 2000 eingeführt. Der 8. Rang der Schweiz an der WM 1999 \nwird aber dennoch als Viertelfinal-Out gewertet.")+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, face="bold", size=large, margin=margin(b=5), color = swissRed),
+    plot.title.position = "plot",  # title positon determined relative to whole plot
+    plot.subtitle = element_text(hjust = 0.5, size=large),
+    legend.position = "none",
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    strip.background = element_rect(fill=swissRed, colour = "white"),
+    strip.text = element_text(color="white", face = "bold", size = medium),
+    axis.text.y = element_text(size = small),
+    axis.text.x = element_text(size = medium, margin = margin(t=5), face = "bold", color="black"),
+    axis.title.y = element_blank(), 
+    axis.title.x = element_blank(), 
+    plot.caption = element_text(size=8, face="italic", hjust = 0, margin = margin(t=20)),
+    plot.caption.position = "plot")
+print(p1)
+
+
+```
+
+<br>
+
+Mit Ralph Krueger an der Bande erreicht man jedes zweite Mal den Viertelfinal und feierte an der Heim WM 1998 sogar den Einzug ins keine Final.
+Unter Sean Simpson kann man in dieser Hinsicht sogar schon fast von einem Rückschritt sprechen. Dreimal war schon in der Vorrunde schluss. Allerdings feierte die Nati unter Simpson mit Silber an der WM 2013 das erste Mal seit 1953 wieder eine WM Medaille. Unter Patrick Fischer erreichte die Nati praktisch immer den Viertelfinal mit der Krönung 2018, als man die zweite Silbermedaille der Neuzeit gewann. Der (Miss)Erfolg der Nati lässt sich aber auch an den jeweiligen WM Schlussrängen messen:
+
+<br>
+
+```{r, echo=FALSE, out.width = "100%"}
+    
+# create table with tournament information
+wcTournamentRankings <- d1%>%
+  filter(event=="wc")%>%
+  distinct(year, venue, coach, rank)
+
+# create grid with labels to be placed in plot
+labelGrid <- data.frame(
+  x = c(2003.5, 2012, 2019.5),
+  y = c(13.5, 13.5, 13.5),
+  labs = c("Ralph Krueger", "Sean Simpson", "Patrick Fischer")
+)
+
+# create plot 
+p2 <- ggplot(wcTournamentRankings, aes(x=year, y=rank))+
+  geom_rect(mapping=aes(xmin=1997, xmax=2009.5, ymin=16, ymax=1, fill="Ralph Krueger"), alpha=0.01)+
+  geom_rect(mapping=aes(xmin=2009.5, xmax=2014.5, ymin=16, ymax=1, fill="Sean Simpson"), alpha=0.01)+
+  geom_rect(mapping=aes(xmin=2015.5, xmax=2023.5, ymin=16, ymax=1, fill="Patrick Fischer"), alpha=0.01)+
+  geom_text(data = labelGrid, aes(x=x, y=y, label=labs, color=labs), size=small/.pt, alpha=0.8)+
+  geom_line(color="red")+
+  geom_point(color="red", fill="white", shape=21, size=5)+
+  geom_text(aes(label = rank), size=small/.pt, color="red")+
+  scale_x_continuous(breaks=1998:2023, expand = expansion(mult=c(0,0)))+
+  scale_y_reverse(
+    breaks = c(15, 8, 4, 1),
+    labels = c("Abstiegskandidat", "Top 8", "Top 4", "Weltmeister"),
+    minor_breaks = 1:16,
+    limits=c(16,1),
+    expand = expansion(mult=c(0,0.01))
+    )+
+  scale_fill_manual(values=colorPalette, limits=c("Ralph Krueger", "Sean Simpson", "Patrick Fischer"))+
+  scale_color_manual(values=colorPalette, limits=c("Ralph Krueger", "Sean Simpson", "Patrick Fischer"))+
+  labs(title="Schlussrang an Weltmeisterschaften unterteilt nach Nationaltrainer")+
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5, face="bold", size=large, margin=margin(b=5), color = swissRed),
+        plot.title.position = "plot",  # title positon determined relative to whole plot
+        plot.subtitle = element_text(hjust = 0.5, size=large),
+        legend.position = "none",
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_line(color="darkgrey", linewidth=0.8, linetype = 2),
+        axis.text.y = element_text(size = medium, margin = margin(t=10)),
+        axis.text.x = element_text(size = small, margin = margin(t=2)),
+        axis.title.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_line(color="darkgrey"),
+        axis.ticks.length.x = unit(2, "pt"),
+        plot.caption = element_text(size=8, face="italic", hjust = 0, margin = margin(t=20)),
+        plot.caption.position = "plot")
+print(p2)
+  
+  
+
+```
+
+<br>
+
+Unter Ralph Krueger schwebte die Schweiz mehrheitlich aber dafür stabil um den 8. Schlussrang herum. Unter Sean Simpson kam bezüglich Schlussrang etwas Unruhe ins Team. Zwei Ausreisser nach oben aber eben auch drei Abschlüsse auf Platz 9 oder darunter prägen seine Zeit. Unter Patrick Fischer schaffte man den Sprung über die Top 8 Grenze dann erstmals mehrfach hintereinander. Mit 5 Platzierungen in den Top 6 aus 7 Turnieren scheint man erstmals einen Schritt nach vorne gemacht zu haben. Der Grosse Exploit blieb aber trotz vielen Viertefinal Teilnahmen auch hier mehrheitlich aus. Ausserdem gilt es wiederum etwas zu relativieren. Einerseits aus zuvor bereits genannten Qualitätsgründen und andererseits weil Russland seit der WM 2022 von Turnieren ausgeschlossen ist. 
+
+<br>
+
+<div class="midsummary">
+<p>**Zwischenfazit:**</p>
+<ul>
+<li>
+Ein regelmässiges Ausscheiden im Viertelfinal ist für die Schweizer Nati kein neuer Trend sondern schon fast Tradition</li>
+<li>Der Titel "Big Red Round-Robing Machine" trifft vorallem auf die jüngste Vergangenheit zu</li>
+</ul>
+</div>
+
+<br>
+<br>
+
+
+## Die Angst vor dem Viertelfinal
+
+Die zuvor gezeigte Grafik zeigt auf, warum die Nati vermutlich mehrheitlich nur schlechte Erinnerungen an Viertelfinal Spiele haben dürfte. Seit dem Aufstieg in die Top Division hat das Team an Weltmeisterschaften 15 Viertelfinals gespielt und nur deren 2 gewonnen. Nemen wir die Viertelfinal Begegnungen an Weltmeisterschaften mal etwas genauer unter die Luppe:
+
+<br> 
+
+```{r, echo=FALSE, message=FALSE}
+    
+# create table with tournament information
+quarterFinalResults <- d2%>%
+  mutate(result_extra = case_when(
+    result_extra == "overtime" ~ "n.V.",
+    result_extra == "shootout" ~ "n.P.",
+    is.na(result_extra) ~ ""
+    )
+    )%>%
+  mutate(score = paste0(goals_opp,":",goals_sui," ",result_extra))%>%
+  mutate(result = ifelse(result == "win", "Sieg", "Niederlage"))%>%
+  mutate_at(c("wr_opp", "wr_sui"), ~ifelse(is.na(.), "", as.character(.)))%>%
+  select(year, opponent, wr_opp, wr_sui, score, result)%>%
+  rename(Jahr=year, Gegner=opponent, `WP Gegner`=wr_opp, `WP Schweiz`=wr_sui, Resultat=score, Ausgang=result)
+
+# add foot note markers
+names(quarterFinalResults)[names(quarterFinalResults)=="Jahr"]<-paste0("Jahr",footnote_marker_number(1))
+names(quarterFinalResults)[names(quarterFinalResults)=="WP Gegner"]<-paste0("WP Gegner",footnote_marker_number(2))
+names(quarterFinalResults)[names(quarterFinalResults)=="WP Schweiz"]<-paste0("WP Schweiz",footnote_marker_number(2))
+
+# print table
+quarterFinalResults%>%
+  kable(
+    booktabs=T,
+    escape = F,
+    caption="Liste aller Viertelfinal Spiele der Nati seit dem Aufstieg",
+    align = "cccccc") %>%
+  kable_styling(full_width = F, bootstrap_options = c("striped")) %>%
+  row_spec(0, background = swissRed, color = "white", bold = T)%>%
+  footnote(
+    number = c("<i>An den Weltmeisterschaften 1998 und 1999 gab es noch keine Viertelfinalrunde<br></i>","<i>Weltranglisten Platz des Gegners und der Schweiz während der jeweiligen WM, Die Weltrangliste wurde im Jahr 2003 eingeführt</i>"),
+    escape = F,
+    footnote_as_chunk = T)
+
+```
+<br> 
+<br> 
+
+## Spielanteile lügen nicht, oder doch?
+
+Klar, im Sport zählt am Schluss nur Sieg oder Niederlage. Man darf sich aber schon die Frage stellen, hätte die Schweiz angesichts dieser Viertelfinal Resultate nicht ein oder zwei Spiele mehr gewinnen können/müssen? Da gab es ja schon das einte oder andere knappe Spiel. Spielanteile können uns hier einen Aufschluss darüber geben, ob die Schweiz jeweils verdient als Verliere vom Eis gegangen ist. Um die Spielanteile zu ermitteln wird eine vereinfachte Annahme getroffen: Die Spielanteile wiederspiegeln sich im Schussverhältnis der Teams wieder. Somit gehen wir davon aus, dass das Team mit mehr Schüssen auf das gegnerische Tor für gewöhnlich auch als Sieger vom Eis geht. Natürlich handelt es sich hier um eine Heuristik, welche der Realität nicht immer Stand hält. Auf Grund der dünnen, zugänglichen Datenlage müssen wir uns aber leider damit zufrieden geben: 
+
+<br> 
+
+```{r, echo=FALSE, warning=FALSE, out.width = "100%"}
+    
+# create table with shooting information
+shootingDifferential1 <- d2%>%
+  mutate(result_extra = case_when(
+    result_extra == "overtime" ~ "n.V.",
+    result_extra == "shootout" ~ "n.P.",
+    is.na(result_extra) ~ ""
+    )
+    )%>%
+  mutate(shoot_diff = shots_sui-shots_opp)%>%
+  mutate(
+    xlabs = ifelse(
+      is.na(shoot_diff), 
+      paste0(year,"*\n",opponent),
+      paste0(year,"\n",opponent)
+      )
+    )%>%
+  mutate(result = ifelse(result=="win", "S", "N"))%>%
+  mutate(result = ifelse(is.na(shoot_diff), NA, result))%>%
+  select(xlabs, shoot_diff, result)
+
+# create second table with shooting information to plot gradient bars
+shootingDifferential2<-shootingDifferential1%>%
+  rowwise()%>%
+  summarise(
+    xlabs = xlabs,
+    shoot_diff_list = ifelse(shoot_diff<=0, list(seq(0,shoot_diff,-0.5)), list(seq(0,shoot_diff,0.5)))
+  )%>%
+  unnest(shoot_diff_list)
+
+# create plot for shooting differentials
+p3<-ggplot()+
+  geom_tile(
+    data=shootingDifferential2,
+    aes(x=xlabs, y=shoot_diff_list, fill=shoot_diff_list),
+    width=0.9
+    )+
+  geom_text(
+    data = shootingDifferential1,
+    aes(x=xlabs, y=shoot_diff, label=result),
+    color="white",
+    vjust=ifelse(shootingDifferential1$shoot_diff<=0, -0.5, 1.5),
+    size=medium/.pt
+    )+
+  scale_fill_gradient2(low="red", mid="grey", high="green", midpoint = 0, breaks = seq(-25, 25, 5))+
+  scale_y_continuous(
+    breaks = seq(-30, 30, 5),
+    expand = expansion(mult=c(0,0))
+    )+
+  labs(
+    title = "Schussverhältnis in Viertelfinal Spielen der Nati",
+    caption= "N = Niederlage, S = Sieg\n* Für dieses Jahr ist keine Schussstatistik vorhanden")+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, face="bold", size=large, margin=margin(b=5), color = swissRed),
+    plot.title.position = "plot",  # title positon determined relative to whole plot
+    plot.subtitle = element_text(hjust = 0.5, size=large),
+    legend.title = element_blank(),
+    legend.key.height = unit(57, "pt"),
+    legend.margin = margin(-5,0,0,0),
+    legend.box.margin = margin(0,0,0,-10),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    strip.background = element_rect(fill=swissRed, colour = "white"),
+    strip.text = element_text(color="white", face = "bold"),
+    axis.text.x = element_text(size = medium, margin = margin(t=5), face = "bold"),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(), 
+    axis.title.x = element_blank(), 
+    plot.caption = element_text(size=8, face="italic", hjust = 0, margin = margin(t=20)),
+    plot.caption.position = "plot")
+
+print(p3)
+```
+
+
+<br>
+
+Die Schweiz war in nur 3 Spielen (2010, 2022, 2023) die spielbestimmende Mannschaft. Alle 3 Spiele gingen jedoch verloren. In 3 weiteren Spielen (2013, 2015, 2017) war das Spiel sehr ausgeglichen aber nur in einem davon gab es den besseren Ausgang für die Schweiz. In den 6 verbleibenden Spielen (2003, 2007, 2008, 2018, 2019, 2021) war die Schweiz spielerisch unterlegen. Immerhin resultiere daraus einen Sieg. Im Grossen und Ganzen lässt sich sagen, dass die Schweiz Mühe hat im Viertelfinal ihr Spiel aufzuziehen. Und wenn sie es doch tut oder gut mit dem Gegner mit hält, schaut dabei zu wenig raus. Es gibt allerdings einen Lichtblick. Die Schweiz hat es in den letzten zwei Jahren geschafft, das Spiel besser zu kontrollieren (trotz äusserst schmerzhaften Niederlagen). Mit etwas glück könnte so ein Spiel auch mal kippen, womit wir auch schon bei der letzten Analyse angekommen wären.
+
+<div class="midsummary">
+<p>**Zwischenfazit:**</p>
+<ul>
+<li>
+Die Schweiz bekundet in Viertelfinal Spielen regelmässig mühe die Spielkontrolle zu übernehmen</li>
+</ul>
+</div>
+
+<br>
+<br>
+
+## Geduld ist der Schlüssel zum Glück
+
+Das Thema Glück und Pech ist im Hockey allgegenwärtig. Um eine Aussage darüber machen zu können, ob ein Spiel glücklich gewonnen oder unglücklich verloren wurde, schauen wir uns die PDO Statistik an. Sie berechnet sich aus der Summe der Schusseffizienz und der Fangquote eines Teams. Da jeder Schuss entweder zu einem Tor oder einem Save führt, ergibt sich über ein ganzes Spiel gesehen unweigerlich einen PDO von 100. Das führt aus statistischer Sicht zu einer schönen Eigenschaft: Alle Mannschaften bewegen sich im Schnitt auf einen Wert von 100 zu (auch bekannt als "Regression To The Mean" für alle Statistik Fans da draussen). Ein Wert über 100 bedeutet also, dass ein Team tendenziell glücklich aggiert, ein PDO unter 100 hingegen weist auf Pech hin. Für mehr Infos zum PDO empfehle ich euch diesen [Artikel](https://medium.com/hockey-stats/advanced-hockey-stats-101-pdo-part-3-of-4-d3f319f2e1f1)). Was sagt also die PDO Statistik der Schweizer Leistungen im Viertelfinal?
+
+<br>
+
+```{r, echo=FALSE, warning=FALSE, out.width = "100%"}
+    
+# create table with pdo information
+pdo <- d2%>%
+  mutate(result_extra = ifelse(is.na(result_extra), "", result_extra))%>%
+  mutate(goals_opp = ifelse(result=="loss"&result_extra == "shootout", goals_opp-1, goals_opp))%>%
+  mutate(
+    shootingPer = round(goals_sui/shots_sui, 3),
+    savePer = round((shots_opp-goals_opp)/shots_opp,3)
+    )%>%
+  mutate(pdo=100*(shootingPer+savePer))%>%
+  mutate(
+    xlabs = ifelse(
+      is.na(pdo), 
+      paste0(year,"*\n",opponent),
+      paste0(year,"\n",opponent)
+      )
+    )%>%
+  mutate(result = ifelse(result=="win", "S", "N"))%>%
+  select(xlabs, shootingPer, savePer, pdo, result)
+  
+# create plot to visualize pdo's in the the tournaments
+p4 <- ggplot(pdo, aes(x=xlabs, y=pdo))+
+  geom_segment(aes(xend=xlabs, yend=0), color=swissRed, size=1)+
+  geom_point(aes(shape=result), size=5, shape=21, color=swissRed, fill="white")+
+  geom_text(aes(label=result), size=medium/.pt, color=swissRed)+
+  geom_label(aes(label=pdo), size=medium/.pt, nudge_y = -8, color=swissRed)+
+  scale_y_continuous(
+    breaks=100,
+    expand = expansion(mult=c(0,0.05)))+
+  labs(
+    title = "PDO Werte der Nati in Viertelfinal Spielen",
+    caption="N = Niederlage, S = Sieg\n* Für dieses Jahr ist keine Schussstatistik vorhanden"
+    )+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, face="bold", size=large, margin=margin(b=5), color = swissRed),
+    plot.title.position = "plot",  # title positon determined relative to whole plot
+    plot.subtitle = element_text(hjust = 0.5, size=large),
+    legend.position = "none",
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(color="darkgrey", linewidth=0.8, linetype = 2),
+    strip.background = element_rect(fill=swissRed, colour = "white"),
+    strip.text = element_text(color="white", face = "bold"),
+    axis.text.y = element_text(size = medium, face = "bold"),
+    axis.text.x = element_text(size = medium, margin = margin(t=5), face = "bold"),
+    axis.title.y = element_blank(), 
+    axis.title.x = element_blank(), 
+    plot.caption = element_text(size=8, face="italic", hjust = 0, margin = margin(t=20)),
+    plot.caption.position = "plot")
+print(p4)
+
+```
+
+<br>
+
+Die Schweiz hatte gerade mal in 4 von 12 Spielen einen PDO von über 100. Wenig überraschend gehören da auch die zwei gewonnenen Viertelfinal Spiele 2013 und 2018 dazu. In den Jahren 2019 und 2021 konnte man trotz etwas mehr Glück im Duell schlussendlich nicht reüssieren. In den restlichen Spielen war man weit bis sehr weit von einem PDO von 100 entfernt, was auf viel Pech hindeutet. In den Entscheidenend Spielen schien die Schusseffizienz und/oder die Fangquote oft nicht auf dem gewünschten Niveau zu sein. Das gilt auch für die Niederlagen an dieser und der letztjährigen Weltmeisterschaft. 
+
+Die Wahrscheinlichkeit für dieses PDO Muster lässt sich auch berechnen. Keine Angst, ich erspare euch die mathematischen Details. Es ist einfach wichtig zu wissen, dass der PDO um den Wert 100 normalverteilt ist. Somit liegen 50% aller Beobachtungen unter 100 und 50% liegen darüber. Das bedeutet auch, dass ein Team in einem Spiel mit je einer 50% Wahrscheinlichkeit einen PDO über oder unter 100 erreichen wird (wir ignorieren jetzt mal, dass theoretisch auch einen PDO von genau 100 möglich wäre). Die Ausgangslage entspricht also einem Bernoulli Experiment mit den zwei möglichen Ereignissen:
+
+- Erfolg = "Das Team hat Glück" = PDO>100
+- Kein Erfolg = "Das Team hat Pech" = PDO<100
+
+Somit haben wir alle Voraussetzungen geschaffen, um zu Berechnen, wie wahrscheinlich es ist, wie die Schweiz in 12 Anläufen nur maximal 4 mal erfolgreich zu sein bzw. Glück zu haben (wenn ihr euch doch den mathematischen Grundlagen aussetzen wollt, könnt ihr gerne [hier](https://studyflix.de/statistik/bernoulli-formel-1789) vorbeischauen). Das Resultat: `r  paste0(100*round(pbinom(4,12,0.5), 3),"%")`. Ergo, in nur etwa einem von fünf Fällen kommt es vor, dass ein Team bei 12 Viertelfinal Teilnahmen gerade mal 4 oder weniger Spiele mit einem PDO über 100 abschliesst. Aus statistischer Sicht sollte sich die Schweiz also darauf verlassen können, dass sich ihr PDO in Viertelfinal Spielen wieder gegen oben bewegt und somit auch wieder mehr Glück im Spiel ist. Damit steigt dann hoffentlich auch die Chance auf einen lang ersehnten Halbfinaleinzug. 
+
+
+<div class="midsummary">
+<p>**Zwischenfazit:**</p>
+<ul>
+<li>Die Schweiz hat in Viertelfinal Spielen viel Pech</li>
+<li>Langfristig müsste die Schweiz wieder etwas mehr Glück und so hoffentlich auch die Chance auf einen Halbfinal haben</li>
+</ul>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="summary">
+
+<h2>Was haben wir gelernt?</h2>
+
+Die Schweizer Nati hat sich über die Jahre ständig weiterentwickelt und in vielerlei Hinsicht verbessert. Patrick Fischer hat daran sicher seinen Anteil, wie gross dieser ist lässt sich aber nicht abschliessend festlegen. Olympische und Viertelfinal Spiele waren seit dem Aufstieg hingegen schon immer ein rotes Tuch. Die Schweiz hatte Mühe ihr Spiel aufzuziehen und war dazu noch vom Pech verfolgt. Das Blatt wird sich aber wenden und die Schweiz sollte irgendwann wieder im Halbfinal stehen.
+
+</div>
+
+<br>
+<br>
+<br>
