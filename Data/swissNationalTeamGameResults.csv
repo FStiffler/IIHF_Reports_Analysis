@@ -1,0 +1,212 @@
+﻿year,venue,event,coach,rank,game,opponent,goals_opp,goals_sui,diff,result,result_extra,points,phase
+1998,Switzerland,wc,Ralph Krueger,4,1,USA,5,2,-3,loss,,0,first round
+1998,Switzerland,wc,Ralph Krueger,4,2,SWE,6,1,-5,loss,,0,first round
+1998,Switzerland,wc,Ralph Krueger,4,3,FRA,1,5,4,win,,3,first round
+1998,Switzerland,wc,Ralph Krueger,4,4,RUS,2,4,2,win,,3,second round
+1998,Switzerland,wc,Ralph Krueger,4,5,CZE,3,1,-2,loss,,0,second round
+1998,Switzerland,wc,Ralph Krueger,4,6,SVK,1,1,0,draw,,1.5,second round
+1998,Switzerland,wc,Ralph Krueger,4,7,SWE,4,1,-3,loss,,0,semifinal 1
+1998,Switzerland,wc,Ralph Krueger,4,8,SWE,7,2,-5,loss,,0,semifinal 2
+1998,Switzerland,wc,Ralph Krueger,4,9,CZE,4,0,-4,loss,,0,bronze medal game
+1999,Norway,wc,Ralph Krueger,8,1,LAT,3,5,2,win,,3,first round
+1999,Norway,wc,Ralph Krueger,8,2,SWE,6,1,-5,loss,,0,first round
+1999,Norway,wc,Ralph Krueger,8,3,FRA,0,6,6,win,,3,first round
+1999,Norway,wc,Ralph Krueger,8,4,CAN,8,2,-6,loss,,0,second round
+1999,Norway,wc,Ralph Krueger,8,5,FIN,5,1,-4,loss,,0,second round
+1999,Norway,wc,Ralph Krueger,8,6,USA,3,0,-3,loss,,0,second round
+2000,Russia,wc,Ralph Krueger,6,1,USA,3,3,0,draw,,1.5,first round
+2000,Russia,wc,Ralph Krueger,6,2,FRA,4,2,-2,loss,,0,first round
+2000,Russia,wc,Ralph Krueger,6,3,RUS,2,3,1,win,,3,first round
+2000,Russia,wc,Ralph Krueger,6,4,SWE,1,1,0,draw,,1.5,second round
+2000,Russia,wc,Ralph Krueger,6,5,LAT,1,4,3,win,,3,second round
+2000,Russia,wc,Ralph Krueger,6,6,BLR,5,3,-2,loss,,0,second round
+2000,Russia,wc,Ralph Krueger,6,7,CAN,5,3,-2,loss,,0,quarterfinal
+2001,Germany,wc,Ralph Krueger,9,1,GER,3,1,-2,loss,,0,first round
+2001,Germany,wc,Ralph Krueger,9,2,BLR,2,5,3,win,,3,first round
+2001,Germany,wc,Ralph Krueger,9,3,CZE,3,1,-2,loss,,0,first round
+2001,Germany,wc,Ralph Krueger,9,4,CAN,6,2,-4,loss,,0,second round
+2001,Germany,wc,Ralph Krueger,9,5,RUS,2,1,-1,loss,,0,second round
+2001,Germany,wc,Ralph Krueger,9,6,ITA,1,8,7,win,,3,second round
+2002,USA,og,Ralph Krueger,11,1,FRA,3,3,0,draw,,1.5,first round
+2002,USA,og,Ralph Krueger,11,2,UKR,5,2,-3,loss,,0,first round
+2002,USA,og,Ralph Krueger,11,3,BLR,1,2,1,win,,3,first round
+2002,USA,og,Ralph Krueger,11,4,AUT,1,4,3,win,,3,second round
+2002,Sweden,wc,Ralph Krueger,10,1,CZE,5,0,-5,loss,,0,first round
+2002,Sweden,wc,Ralph Krueger,10,2,GER,3,0,-3,loss,,0,first round
+2002,Sweden,wc,Ralph Krueger,10,3,JAP,1,5,4,win,,3,first round
+2002,Sweden,wc,Ralph Krueger,10,4,USA,3,0,-3,loss,,0,second round
+2002,Sweden,wc,Ralph Krueger,10,5,CAN,3,2,-1,loss,,0,second round
+2002,Sweden,wc,Ralph Krueger,10,6,LAT,4,6,2,win,,3,second round
+2003,Finland,wc,Ralph Krueger,8,1,RUS,5,2,-3,loss,,0,first round
+2003,Finland,wc,Ralph Krueger,8,2,USA,0,1,1,win,,3,first round
+2003,Finland,wc,Ralph Krueger,8,3,DEN,2,6,4,win,,3,first round
+2003,Finland,wc,Ralph Krueger,8,4,LAT,2,4,2,win,,3,second round
+2003,Finland,wc,Ralph Krueger,8,5,CAN,2,0,-2,loss,,0,second round
+2003,Finland,wc,Ralph Krueger,8,6,SWE,5,2,-3,loss,,0,second round
+2003,Finland,wc,Ralph Krueger,8,7,SVK,3,1,-2,loss,,0,quarterfinal
+2004,Czech Republic,wc,Ralph Krueger,8,1,FRA,0,6,6,win,,3,first round
+2004,Czech Republic,wc,Ralph Krueger,8,2,AUT,4,4,0,draw,,1.5,first round
+2004,Czech Republic,wc,Ralph Krueger,8,3,CAN,3,1,-2,loss,,0,first round
+2004,Czech Republic,wc,Ralph Krueger,8,4,LAT,1,1,0,draw,,1.5,second round
+2004,Czech Republic,wc,Ralph Krueger,8,5,CZE,3,1,-2,loss,,0,second round
+2004,Czech Republic,wc,Ralph Krueger,8,6,GER,0,1,1,win,,3,second round
+2004,Czech Republic,wc,Ralph Krueger,8,7,SVK,3,1,-2,loss,,0,quarterfinal
+2005,Austria,wc,Ralph Krueger,8,1,CZE,3,1,-2,loss,,0,first round
+2005,Austria,wc,Ralph Krueger,8,2,KAZ,1,2,1,win,,3,first round
+2005,Austria,wc,Ralph Krueger,8,3,GER,1,5,4,win,,3,first round
+2005,Austria,wc,Ralph Krueger,8,4,RUS,3,3,0,draw,,1.5,second round
+2005,Austria,wc,Ralph Krueger,8,5,SVK,3,1,-2,loss,,0,second round
+2005,Austria,wc,Ralph Krueger,8,6,BLR,0,2,2,win,,3,second round
+2005,Austria,wc,Ralph Krueger,8,7,SWE,2,1,-1,loss,,0,quarterfinal
+2006,Italy,og,Ralph Krueger,6,1,FIN,5,0,-5,loss,,0,first round
+2006,Italy,og,Ralph Krueger,6,2,CZE,2,3,1,win,,3,first round
+2006,Italy,og,Ralph Krueger,6,3,CAN,0,2,2,win,,3,first round
+2006,Italy,og,Ralph Krueger,6,4,GER,2,2,0,draw,,1.5,first round
+2006,Italy,og,Ralph Krueger,6,5,ITA,3,3,0,draw,,1.5,first round
+2006,Italy,og,Ralph Krueger,6,6,SWE,6,2,-4,loss,,0,quarterfinal
+2006,Latvia,wc,Ralph Krueger,9,1,ITA,1,3,2,win,,3,first round
+2006,Latvia,wc,Ralph Krueger,9,2,UKR,1,2,1,win,,3,first round
+2006,Latvia,wc,Ralph Krueger,9,3,SWE,4,4,0,draw,,1.5,first round
+2006,Latvia,wc,Ralph Krueger,9,5,SVK,2,2,0,draw,,1.5,second round
+2006,Latvia,wc,Ralph Krueger,9,6,RUS,6,3,-3,loss,,0,second round
+2006,Latvia,wc,Ralph Krueger,9,7,BLR,2,1,-1,loss,,0,second round
+2007,Russia,wc,Ralph Krueger,8,1,LAT,1,2,1,win,,3,first round
+2007,Russia,wc,Ralph Krueger,8,2,ITA,1,2,1,win,,3,first round
+2007,Russia,wc,Ralph Krueger,8,3,SWE,6,0,-6,loss,,0,first round
+2007,Russia,wc,Ralph Krueger,8,4,FIN,2,0,-2,loss,,0,second round
+2007,Russia,wc,Ralph Krueger,8,5,DEN,1,4,3,win,,0,second round
+2007,Russia,wc,Ralph Krueger,8,6,RUS,6,3,-3,loss,,0,second round
+2007,Russia,wc,Ralph Krueger,8,7,CAN,5,1,-4,loss,,0,quarterfinal
+2008,Canada,wc,Ralph Krueger,7,1,FRA,1,4,3,win,,3,first round
+2008,Canada,wc,Ralph Krueger,7,2,BLR,1,2,1,win,,3,first round
+2008,Canada,wc,Ralph Krueger,7,3,SWE,2,4,2,win,,3,first round
+2008,Canada,wc,Ralph Krueger,7,4,CZE,5,0,-5,loss,,0,second round
+2008,Canada,wc,Ralph Krueger,7,5,DEN,2,7,5,win,,3,second round
+2008,Canada,wc,Ralph Krueger,7,6,RUS,5,3,-2,loss,,0,second round
+2008,Canada,wc,Ralph Krueger,7,7,RUS,6,0,-6,loss,,0,quarterfinal
+2009,Switzerland,wc,Ralph Krueger,9,1,FRA,0,1,1,win,,3,first round
+2009,Switzerland,wc,Ralph Krueger,9,2,GER,2,3,1,win,overtime,2,first round
+2009,Switzerland,wc,Ralph Krueger,9,3,RUS,4,2,-2,loss,,0,first round
+2009,Switzerland,wc,Ralph Krueger,9,4,LAT,2,1,-1,loss,shootout,1,second round
+2009,Switzerland,wc,Ralph Krueger,9,5,SWE,4,1,-3,loss,,0,second round
+2009,Switzerland,wc,Ralph Krueger,9,6,USA,3,4,1,win,overtime,2,second round
+2010,Canada,og,Ralph Krueger,8,1,USA,3,1,-2,loss,,0,first round
+2010,Canada,og,Ralph Krueger,8,2,CAN,3,2,-1,loss,shootout,1,first round
+2010,Canada,og,Ralph Krueger,8,3,NOR,4,5,1,win,overtime,2,first round
+2010,Canada,og,Ralph Krueger,8,4,BLR,2,3,1,win,shootout,2,qualification playoffs
+2010,Canada,og,Ralph Krueger,8,5,USA,2,0,-2,loss,,0,quarterfinal
+2010,Germany,wc,Sean Simpson,5,1,LAT,1,3,2,win,,3,first round
+2010,Germany,wc,Sean Simpson,5,2,ITA,0,3,3,win,,3,first round
+2010,Germany,wc,Sean Simpson,5,3,CAN,1,4,3,win,,3,first round
+2010,Germany,wc,Sean Simpson,5,4,CZE,2,3,1,win,,3,second round
+2010,Germany,wc,Sean Simpson,5,5,NOR,3,2,-1,loss,,0,second round
+2010,Germany,wc,Sean Simpson,5,6,SWE,5,0,-5,loss,,0,second round
+2010,Germany,wc,Sean Simpson,5,7,GER,1,0,-1,loss,,0,quarterfinal
+2011,Slovakia,wc,Sean Simpson,9,1,FRA,0,1,1,win,overtime,2,first round
+2011,Slovakia,wc,Sean Simpson,9,2,BLR,1,4,3,win,,3,first round
+2011,Slovakia,wc,Sean Simpson,9,3,CAN,4,3,-1,loss,overtime,1,first round
+2011,Slovakia,wc,Sean Simpson,9,4,NOR,3,2,-1,loss,,0,second round
+2011,Slovakia,wc,Sean Simpson,9,5,SWE,2,0,-2,loss,,0,second round
+2011,Slovakia,wc,Sean Simpson,9,6,USA,3,5,2,win,,3,second round
+2012,Finland/Sweden,wc,Sean Simpson,11,1,KAZ,1,5,4,win,,3,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,2,BLR,2,3,1,win,,3,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,3,FIN,5,2,-3,loss,,0,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,4,CAN,3,2,-1,loss,,0,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,5,FRA,4,2,-2,loss,,0,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,6,SVK,1,0,-1,loss,,0,first round
+2012,Finland/Sweden,wc,Sean Simpson,11,7,USA,5,2,-3,loss,,0,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,1,SWE,2,3,1,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,2,CAN,2,3,1,win,overtime,2,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,3,CZE,2,5,3,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,4,SLO,1,7,6,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,5,DEN,1,4,3,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,6,NOR ,1,3,2,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,7,BLR,1,4,3,win,,3,first round
+2013,Sweden/Finland,wc,Sean Simpson,2,8,CZE,1,2,1,win,,3,quarterfinal
+2013,Sweden/Finland,wc,Sean Simpson,2,9,USA,0,3,3,win,,3,semifinal
+2013,Sweden/Finland,wc,Sean Simpson,2,10,SWE,5,1,-4,loss,,0,final
+2014,Russia,og,Sean Simpson,9,1,LAT,0,1,1,win,,3,first round
+2014,Russia,og,Sean Simpson,9,2,SWE,1,0,-1,loss,,0,first round
+2014,Russia,og,Sean Simpson,9,3,CZE,0,1,1,win,,3,first round
+2014,Russia,og,Sean Simpson,9,4,LAT,3,1,-2,loss,,0,qualification playoffs
+2014,Belarus,wc,Sean Simpson,10,1,RUS,5,0,-5,loss,,0,first round
+2014,Belarus,wc,Sean Simpson,10,2,USA,3,2,-1,loss,,0,first round
+2014,Belarus,wc,Sean Simpson,10,3,BLR,4,3,-1,loss,,0,first round
+2014,Belarus,wc,Sean Simpson,10,4,GER,2,3,1,win,,3,first round
+2014,Belarus,wc,Sean Simpson,10,5,FIN,3,2,-1,loss,shootout,1,first round
+2014,Belarus,wc,Sean Simpson,10,6,KAZ,2,6,4,win,,3,first round
+2014,Belarus,wc,Sean Simpson,10,7,LAT,2,3,1,win,,3,first round
+2015,Czech Republic,wc,Glen Hanlon,8,1,AUT,4,3,-1,loss,shootout,1,first round
+2015,Czech Republic,wc,Glen Hanlon,8,2,FRA,1,3,2,win,,3,first round
+2015,Czech Republic,wc,Glen Hanlon,8,3,GER,0,1,1,win,,3,first round
+2015,Czech Republic,wc,Glen Hanlon,8,4,LAT,2,1,-1,loss,overtime,1,first round
+2015,Czech Republic,wc,Glen Hanlon,8,5,SWE,2,1,-1,loss,overtime,1,first round
+2015,Czech Republic,wc,Glen Hanlon,8,6,CAN,7,2,-5,loss,,0,first round
+2015,Czech Republic,wc,Glen Hanlon,8,7,CZE,2,1,-1,loss,shootout,1,first round
+2015,Czech Republic,wc,Glen Hanlon,8,8,USA,3,1,-2,loss,,0,quarterfinal
+2016,Russia,wc,Patrick Fischer,11,1,KAZ,3,2,-1,loss,shootout,1,first round
+2016,Russia,wc,Patrick Fischer,11,2,NOR,4,3,-1,loss,overtime,1,first round
+2016,Russia,wc,Patrick Fischer,11,3,DEN,2,3,1,win,overtime,2,first round
+2016,Russia,wc,Patrick Fischer,11,4,LAT,4,5,1,win,,3,first round
+2016,Russia,wc,Patrick Fischer,11,5,RUS,5,1,-4,loss,,0,first round
+2016,Russia,wc,Patrick Fischer,11,6,SWE,3,2,-1,loss,shootout,1,first round
+2016,Russia,wc,Patrick Fischer,11,7,CZE,5,4,-1,loss,,0,first round
+2017,Germany/France,wc,Patrick Fischer,6,1,SLO,4,5,1,win,shootout,2,first round
+2017,Germany/France,wc,Patrick Fischer,6,2,NOR,0,3,3,win,,3,first round
+2017,Germany/France,wc,Patrick Fischer,6,3,FRA,4,3,-1,loss,shootout,1,first round
+2017,Germany/France,wc,Patrick Fischer,6,4,BLR,0,3,3,win,,3,first round
+2017,Germany/France,wc,Patrick Fischer,6,5,CAN,2,3,1,win,overtime,2,first round
+2017,Germany/France,wc,Patrick Fischer,6,6,FIN,3,2,-1,loss,overtime,1,first round
+2017,Germany/France,wc,Patrick Fischer,6,7,CZE,1,3,2,win,,3,first round
+2017,Germany/France,wc,Patrick Fischer,6,8,SWE,3,1,-2,loss,,0,quarterfinal
+2018,South Korea,og,Patrick Fischer,10,1,CAN,5,1,-4,loss,,0,first round
+2018,South Korea,og,Patrick Fischer,10,2,KOR,0,8,8,win,,3,first round
+2018,South Korea,og,Patrick Fischer,10,3,CZE,4,1,-3,loss,,0,first round
+2018,South Korea,og,Patrick Fischer,10,4,GER,2,1,-1,loss,overtime,1,qualification playoffs
+2018,Denmark,wc,Patrick Fischer,2,1,AUT,2,3,1,win,overtime,2,first round
+2018,Denmark,wc,Patrick Fischer,2,2,SVK,0,2,2,win,,3,first round
+2018,Denmark,wc,Patrick Fischer,2,3,CZE,5,4,-1,loss,shootout,1,first round
+2018,Denmark,wc,Patrick Fischer,2,4,BLR,2,5,3,win,,3,first round
+2018,Denmark,wc,Patrick Fischer,2,5,RUS,4,3,-1,loss,,0,first round
+2018,Denmark,wc,Patrick Fischer,2,6,SWE,5,3,-2,loss,,0,first round
+2018,Denmark,wc,Patrick Fischer,2,7,FRA,1,5,4,win,,3,first round
+2018,Denmark,wc,Patrick Fischer,2,8,FIN,2,3,1,win,,3,quarterfinal
+2018,Denmark,wc,Patrick Fischer,2,9,CAN,2,3,1,win,,3,semifinal
+2018,Denmark,wc,Patrick Fischer,2,10,SWE,3,2,-1,loss,shootout,1,final
+2019,Slovakia,wc,Patrick Fischer,8,1,ITA,0,9,9,win,,3,first round
+2019,Slovakia,wc,Patrick Fischer,8,2,LAT,1,3,2,win,,3,first round
+2019,Slovakia,wc,Patrick Fischer,8,3,AUT,0,4,4,win,,3,first round
+2019,Slovakia,wc,Patrick Fischer,8,4,NOR,1,4,3,win,,3,first round
+2019,Slovakia,wc,Patrick Fischer,8,5,SWE,4,3,-1,loss,,0,first round
+2019,Slovakia,wc,Patrick Fischer,8,6,RUS,3,0,-3,loss,,0,first round
+2019,Slovakia,wc,Patrick Fischer,8,7,CZE,5,4,-1,loss,,0,first round
+2019,Slovakia,wc,Patrick Fischer,8,8,CAN,3,2,-1,loss,overtime,1,quarterfinal
+2021,Latvia,wc,Patrick Fischer,6,1,CZE,2,5,3,win,,3,first round
+2021,Latvia,wc,Patrick Fischer,6,2,DEN,0,1,1,win,,3,first round
+2021,Latvia,wc,Patrick Fischer,6,3,SWE,7,0,-7,loss,,0,first round
+2021,Latvia,wc,Patrick Fischer,6,4,SVK,1,8,7,win,,3,first round
+2021,Latvia,wc,Patrick Fischer,6,5,RUS,4,1,-3,loss,,0,first round
+2021,Latvia,wc,Patrick Fischer,6,6,BLR,0,6,6,win,,3,first round
+2021,Latvia,wc,Patrick Fischer,6,7,GBR,3,6,3,win,,3,first round
+2021,Latvia,wc,Patrick Fischer,6,8,GER,3,2,-1,loss,shootout,1,quarterfinal
+2022,China,og,Patrick Fischer,8,1,RUS,1,0,-1,loss,,0,first round
+2022,China,og,Patrick Fischer,8,2,CZE,2,1,-1,loss,shootout,1,first round
+2022,China,og,Patrick Fischer,8,3,DEN,5,3,-2,loss,,0,first round
+2022,China,og,Patrick Fischer,8,4,CZE,2,4,2,win,,3,qualification playoffs
+2022,China,og,Patrick Fischer,8,5,FIN,5,1,-4,loss,,0,quarterfinal
+2022,Finland,wc,Patrick Fischer,5,1,ITA,2,5,3,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,2,DEN,0,6,6,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,3,KAZ,2,3,1,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,4,SVK,3,5,2,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,5,CAN,3,6,3,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,6,FRA,2,5,3,win,,3,first round
+2022,Finland,wc,Patrick Fischer,5,7,GER,3,4,1,win,shootout,2,first round
+2022,Finland,wc,Patrick Fischer,5,8,USA,3,0,-3,loss,,0,quarterfinal
+2023,Latvia,wc,Patrick Fischer,5,1,SLO,0,7,7,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,2,NOR,0,3,3,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,3,KAZ,0,5,5,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,4,SVK,2,4,2,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,5,CAN,2,3,1,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,6,CZE,2,4,2,win,,3,first round
+2023,Latvia,wc,Patrick Fischer,5,7,LAT,4,3,-1,loss,overtime,1,first round
+2023,Latvia,wc,Patrick Fischer,5,8,GER,3,1,-2,loss,,0,quarterfinal

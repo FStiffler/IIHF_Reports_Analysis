@@ -1,0 +1,16 @@
+﻿year,venue,event,coach,rank,opponent,wr_opp,goals_opp,shots_opp,wr_sui,goals_sui,shots_sui,goal_diff,result,result_extra
+2000,Russia,wc,Ralph Krueger,6,CAN,,5,,,3,,-2,loss,
+2003,Finland,wc,Ralph Krueger,8,SVK,,3,,,1,,-2,loss,
+2004,Czech Republic,wc,Ralph Krueger,8,SVK,3,3,27,9,1,21,-2,loss,
+2005,Austria,wc,Ralph Krueger,8,SWE,2,2,,9,1,,-1,loss,
+2007,Russia,wc,Ralph Krueger,8,CAN,3,5,44,8,1,22,-4,loss,
+2008,Canada,wc,Ralph Krueger,7,RUS,5,6,30,8,0,22,-6,loss,
+2010,Germany,wc,Sean Simpson,5,GER,12,1,25,7,0,41,-1,loss,
+2013,Sweden/Finland,wc,Sean Simpson,2,CZE,3,1,34,9,2,32,1,win,
+2015,Czech Republic,wc,Glen Hanlon,8,USA,6,3,24,7,1,22,-2,loss,
+2017,Germany/France,wc,Patrick Fischer,6,SWE,5,3,29,7,1,27,-2,loss,
+2018,Denmark,wc,Patrick Fischer,2,FIN,4,2,34,7,3,27,1,win,
+2019,Slovakia,wc,Patrick Fischer,8,CAN,1,3,42,7,2,24,-1,loss,overtime
+2021,Latvia,wc,Patrick Fischer,6,GER,7,3,41,8,2,22,-1,loss,shootout
+2022,Finland,wc,Patrick Fischer,5,USA,4,3,22,8,0,33,-3,loss,
+2023,Latvia,wc,Patrick Fischer,5,GER,9,3,23,7,1,30,-2,loss,

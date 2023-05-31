@@ -1,0 +1,49 @@
+
+h1{
+    font-size: 20pt;
+    text-align: center;
+    background-color: #FF0000;
+    padding: 5px;
+    color: white;
+}
+
+h2{
+    font-size: 15pt;
+}
+
+p{
+    font-size: 12pt;
+}
+
+.midsummary{
+    font-size: 12pt;
+    background-color: #868585;
+    color: white;
+    padding: 15px;
+}
+
+.midsummary p{
+    text-align: center;
+}
+
+.midsummary ul{
+    text-align: left;
+}
+
+caption{
+    font-size: 12pt;
+    font-weight: bold;
+    color: #FF0000;
+    text-align: center;
+}
+
+tfoot{
+    font-size: 10pt;
+}
+
+.summary{
+    text-align: center;
+    background-color: #FF0000;
+    padding: 5px;
+    color: white;
+}
