@@ -33,7 +33,7 @@ large <- 9
 
 ## Und jährlich grüsst das Murmeltier...
 
-Das Ausscheiden der Schweizer Eishockey Nationalmannschaft im diesjährigen WM Viertelfinal hat hierzulande heftige Reaktionen ausgelöst. Man fragt sich wie ein Team, welches die Vorrunde so dominiert hat, zum wiederholten Male im Viertelfinal scheitern konnte. Der Verband und insbesondere Patrick Fischer als Nationaltrainer werden in Frage gestellt. Angesichts dieser Sachlage ist es Zeit für eine sachliche Analyse zum Zustand der Schweizer Eishockey Nationalmannschaft. Die nachfolgende Analyse basiert auf Daten zu allen Spielen der Schweizer Nationalmannschaft an Weltmeisterschaften und Olympischen Spielen seit dem Aufstieg in die Top-Division im Jahr 1997.
+Das Ausscheiden der Schweizer Eishockey Nationalmannschaft im diesjährigen WM Viertelfinal hat hierzulande heftige Reaktionen ausgelöst. Man fragt sich wie ein Team, welches die Vorrunde so dominiert hat, zum wiederholten Male im Viertelfinal scheitern konnte. Der Verband und insbesondere Patrick Fischer als Nationaltrainer werden in Frage gestellt. Angesichts dieser Ausgangslage ist es Zeit für eine sachliche Analyse zum Zustand der Schweizer Eishockey Nationalmannschaft. Die nachfolgenden Auswertungen basieren auf Daten zu allen Spielen der Schweizer Nationalmannschaft an Weltmeisterschaften und Olympischen Turnieren seit dem Aufstieg in die Top-Division im Jahr 1997.
 
 <br>
 
@@ -133,7 +133,7 @@ trainerComparisonByEvent%>%
  
 Was gleich heraus sticht, Fischers Bilanz bei Olympischen Spielen ist katastrophal. Gerade mal zwei Siege aus neun Spielen und nur 0.89 Punkte pro Spiel haben bisher heraus geschaut. Ralph Krueger und Sean Simpson waren trotz Gegner mit Star Besetzung (und mit nur einer handvoll NHL Spielern in den eigenen Reihen) deutlich erfolgreicher (aber jetzt halt auch nicht super erfolgreich). Des Weiteren haben alle drei Coaches gemeinsam, dass das Team an Olympischen Spielen eine negative Torbilanz aufweist.
 
-An Weltmeisterschaften sieht die Welt jedoch ganz anders aus. Fischer gewann mit dem Team 61% aller Spiele und holte so im Schnitt 1.93 Punkte pro Spiel. Das ist mehr als eineinhalb mal so viel wie unter Krueger und ebenfalls eine merkliche Differenz zu Simpson. Auch die Torausbeute kann sich sehen lassen. Im Schnitt schoss man pro Spiel ein Tor mehr als man erhalten hat. Man erhielt zwar immernoch mehr Tore als unter Simpson, der Unterschied ist aber im Vergleich zur Gesamtübersicht in der vorherigen Auswertung um einiges kleiner.
+An Weltmeisterschaften sieht die Welt jedoch ganz anders aus. Fischer gewann mit dem Team 61% aller Spiele und holte so im Schnitt 1.93 Punkte pro Spiel. Das ist mehr als eineinhalb mal so viel wie unter Krueger und ebenfalls eine merkliche Differenz zu Simpson. Auch die Torausbeute kann sich sehen lassen. Im Schnitt schoss man pro Spiel ein Tor mehr als man erhielt. Man erhielt zwar immernoch mehr Tore als unter Simpson, der Unterschied ist aber im Vergleich zur Gesamtübersicht in der vorherigen Auswertung um einiges kleiner.
 
 Relativierend muss jedoch gesagt werden, dass die Qualität der Schweizer Mannschaft gemessen an der NHL Erfahrung stetig zugenommen hat, was Fischer in dieser Auswertung sicherlich zu Gute kommt. Dass die gezeigten Zahlen allerdings NUR ein Resultat höherer Qualität sein sollen, wage ich zu bezweifeln. Man darf nicht vergessen, dass auch andere Nationen sich weiterentwickelt haben. Der tatsächliche Einfluss von Qualität auf das Abschneiden der Schweizer Nationalmannschaft ist eine spannende Frage für ein andermal.
 
@@ -563,7 +563,7 @@ Somit haben wir alle Voraussetzungen geschaffen, um zu Berechnen, wie wahrschein
 
 - Eine Wahrscheinlichkeit von **`r  paste0(100*round(pbinom(4,12,0.5), 3),"%")`**. 
 
-Was heisst das? In nur etwa einem von fünf Fällen kommt es vor, dass ein Team bei zwölf Viertelfinal Teilnahmen gerade mal vier oder weniger davon mit einem PDO über 100 abschliesst oder einfach gesagt, die Schweiz hat nicht nur einfach Pech sondern sie hat es auch etwas unwahrscheinlich oft und gehört damit zu den unteren 20% auf dem "Glück-O-meter". Aus statistischer Sicht sollte sich die Schweiz also darauf verlassen können, dass sich ihr PDO in Viertelfinal Spielen irgendwann wieder gegen oben korrigiert und somit auch mit mehr Glück im Spiel rechnen kann. Es gilt also, mit Geduld kommt Glück und so hoffentlich auch wieder einmal der lang ersehnte Halbfinaleinzug. 
+Was heisst das? In nur etwa einem von fünf Fällen kommt es vor, dass ein Team bei zwölf Viertelfinal Teilnahmen gerade mal vier oder weniger davon mit einem PDO über 100 abschliesst oder einfach gesagt, die Schweiz hat nicht nur einfach Pech sondern sie hat es auch etwas unwahrscheinlich oft und gehört damit zu den unteren 20% auf dem "Glück-O-meter". Aus statistischer Sicht sollte sich die Schweiz also darauf verlassen können, dass sich ihr PDO in Viertelfinal Spielen irgendwann wieder gegen oben korrigiert und somit auch wieder mehr Glück im Spiel ist. Es gilt, mit Geduld kommt Glück und so hoffentlich auch wieder einmal der lang ersehnte Halbfinaleinzug. 
 
 <br>
 
@@ -584,7 +584,7 @@ Was heisst das? In nur etwa einem von fünf Fällen kommt es vor, dass ein Team 
 
 <h2>TLDR</h2>
 
-Die Schweizer Nati hat sich über die Jahre ständig weiterentwickelt und in vielerlei Hinsicht verbessert. Patrick Fischer hat daran sicher seinen Anteil, wie gross dieser ist lässt sich aber nicht abschliessend festlegen. Olympische Spiele und Viertelfinals waren seit dem Aufstieg hingegen schon immer ein rotes Tuch für die Nati. Die Schweiz verlore viele Viertelfinal Spiele nur knapp, hatte Mühe ihr Spiel aufzuziehen und war dazu noch vom Pech verfolgt. Gerade das fehlende Glück sollte sich in Zukunft irgendwann wieder relativieren und dann liegt auch wiedermal ein Halbfinal drin.
+<p>Die Schweizer Nati hat sich über die Jahre ständig weiterentwickelt und in vielerlei Hinsicht verbessert. Patrick Fischer hat daran sicher seinen Anteil, wie gross dieser ist lässt sich aber nicht abschliessend festlegen. Olympische Spiele und Viertelfinals waren seit dem Aufstieg hingegen schon immer ein rotes Tuch für die Nati. Die Schweiz verlor viele Viertelfinal Spiele nur knapp, hatte Mühe ihr Spiel aufzuziehen und war dazu noch vom Pech verfolgt. Gerade das fehlende Glück sollte sich in Zukunft irgendwann wieder zurückkommen und dann liegt vielleicht auch ein Halbfinal drin.</p>
 
 </div>
 

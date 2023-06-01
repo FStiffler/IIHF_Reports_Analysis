@@ -46,8 +46,20 @@ tfoot{
 }
 
 .summary{
-    text-align: center;
     background-color: #FF0000;
     padding: 5px;
     color: white;
+}
+
+.summary h2{
+    text-align: center;
+    font-size: 15pt;
+}
+
+.summary p{
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
