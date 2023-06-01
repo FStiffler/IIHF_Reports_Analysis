@@ -1,4 +1,5 @@
 ---
+title: "Analyse zum erneuten Ausscheiden der Schweizer Eishockey Nationalmannschaft"
 output: 
   html_document:
     css: "Ressources/style.css"
@@ -26,9 +27,6 @@ medium <- 8
 large <- 9
 
 ```
-
-
-# Analyse zum erneuten Ausscheiden der Schweizer Eishockey Nationalmannschaft
 
 <br>
 <br>
