@@ -30,6 +30,10 @@ p{
     text-align: left;
 }
 
+ li{
+    font-size: 12pt;
+}
+
 caption{
     font-size: 12pt;
     font-weight: bold;

@@ -89,10 +89,10 @@ trainerComparison%>%
 ```
 <br>
 
-Unter Ralph Krueger konnte sich die Nati dauerhaft in der Top Division festsetzen. Man gewann aber nur 38% der Spiele (`r d1%>%filter(coach=="Ralph Krueger"&result=="draw")%>%nrow()` Spiele unter Krueger endeten mit einem Unentschieden) und holte dabei 1.24 Punkte pro Spiel. Das änderte sich unter Sean Simpson, welcher mit der Nati 56% aller Spiele gewann. Patrick Fischer und Sean Simpson liegen in dieser Statistik gleich auf. Im Vergleich zu Simpson holte das Team unter Patrick Fischer jedoch mehr Punkte pro Spiel. Bei der Betrachtung der durchschnittlich pro Spiel geschossenen und erhaltenen Tore fällt auf, dass Fischer ein sehr offensives, aber defensiv dadurch auch anfälligeres Hockey spielen lässt. Die Nati schiesst mehr Tore als unter beiden Vorgängern und erhält weniger Tore als noch unter Kruege, jedoch mehr als unter Simpsons. 
+Unter Ralph Krueger konnte sich die Nati dauerhaft in der Top Division festsetzen. Man gewann aber nur 38% der Spiele (`r d1%>%filter(coach=="Ralph Krueger"&result=="draw")%>%nrow()` Spiele unter Krueger endeten mit einem Unentschieden) und holte dabei 1.24 Punkte pro Spiel. Das änderte sich unter Sean Simpson, welcher mit der Nati 56% aller Spiele gewann. Patrick Fischer und Sean Simpson liegen in dieser Statistik gleich auf. Im Vergleich zu Simpson holte das Team unter Patrick Fischer jedoch mehr Punkte pro Spiel. Bei der Betrachtung der durchschnittlich pro Spiel geschossenen und erhaltenen Tore fällt auf, dass Fischer ein sehr offensives aber defensiv dadurch auch anfälligeres Hockey spielen lässt. Die Nati schiesst mehr Tore als unter beiden Vorgängern und erhält weniger Tore als noch unter Kruege, jedoch mehr als unter Simpsons. 
 
 
-Bei der Betrachtung dieser ersten Analyse gilt es allerdings Vorsicht walten zu lassen. Bei den Olympischen Turnieren unter Ralph Krueger und Sean Simpson waren die NHL Stars noch dabei. Ab dem ersten Olympischen Turnier unter Patrick Fischer 2018 in Süd Korea war das nicht mehr der Fall. Lasst uns deshalb die gleiche Stastik mit einer weiteren Unterscheidung nach Wettkampfart nochmals anschauen:
+Bei der Betrachtung dieser Zahlen gilt es allerdings Vorsicht walten zu lassen. Bei den Olympischen Turnieren unter Ralph Krueger und Sean Simpson waren die NHL Stars noch dabei. Ab dem ersten Olympischen Turnier unter Patrick Fischer 2018 in Süd Korea war das nicht mehr der Fall. Lasst uns deshalb die gleiche Stastik mit einer weiteren Unterscheidung nach Wettkampfart nochmals anschauen:
 
 <br>
 
@@ -133,9 +133,11 @@ trainerComparisonByEvent%>%
  
  <br>
  
-Was gleich heraus sticht, Fischers Bilanz bei Olympischen Spielen ist katastrophal. Gerade mal zwei Siege aus 9 Spielen und nur 0.89 Punkte pro Spiel haben bisher heraus geschaut. Ralph Krueger und Sean Simpson waren trotz Gegner mit Star Besetzung (und mit nur einer handvoll NHL Spielern in den eigenen Reihen) deutlich erfolgreicher (aber jetzt halt auch nicht super erfolgreich). Des Weiteren haben alle drei Coaches gemeinsam, dass das Team an Olympischen Spielen eine negative Tordifferenz aufweist.
+Was gleich heraus sticht, Fischers Bilanz bei Olympischen Spielen ist katastrophal. Gerade mal zwei Siege aus neun Spielen und nur 0.89 Punkte pro Spiel haben bisher heraus geschaut. Ralph Krueger und Sean Simpson waren trotz Gegner mit Star Besetzung (und mit nur einer handvoll NHL Spielern in den eigenen Reihen) deutlich erfolgreicher (aber jetzt halt auch nicht super erfolgreich). Des Weiteren haben alle drei Coaches gemeinsam, dass das Team an Olympischen Spielen eine negative Torbilanz aufweist.
 
-Bei Weltmeisterschaften sieht die Welt jedoch ganz anders aus. Fischer gewann mit dem Team 61% aller Spiele und holte so im Schnitt 1.93 Punkte pro Spiel. Das ist mehr als 1.5 mal so viel wie unter Krueger und ebenfalls eine merkliche Differenz zu Simpson. Auch die Torausbeute kann sich sehen lassen. Im Schnitt schiesst man pro Spiel ein Tor mehr als man erhält und der in der vorherigen Analyse festgestellte Gap zwischen Simpson und Fischer bezüglich erhaltener Tore schliesst sich wieder ein bisschen. Relativierend muss jedoch gesagt werden, dass die Qualität der Schweizer Mannschaft gemessen an der Anzahl Spieler mit NHL Erfahrung im Kader stetig zugenommen hat, was Fischer in dieser Auswertung sicherlich zu Gute kommt. Dass die Werte allerdings NUR ein Resultat höherer Qualität sein sollen, wage ich zu bezweifeln. Man darf nicht vergessen, dass auch andere Nationen sich weiterentwickelt haben. Der tatsächliche Einfluss von Qualität auf die gezeigten Metriken bleibt somit eine Frage für ein andermal.  
+An Weltmeisterschaften sieht die Welt jedoch ganz anders aus. Fischer gewann mit dem Team 61% aller Spiele und holte so im Schnitt 1.93 Punkte pro Spiel. Das ist mehr als eineinhalb mal so viel wie unter Krueger und ebenfalls eine merkliche Differenz zu Simpson. Auch die Torausbeute kann sich sehen lassen. Im Schnitt schoss man pro Spiel ein Tor mehr als man erhalten hat. Man erhielt zwar immernoch mehr Tore als unter Simpson, der Unterschied ist aber im Vergleich zur Gesamtübersicht in der vorherigen Auswertung um einiges kleiner.
+
+Relativierend muss jedoch gesagt werden, dass die Qualität der Schweizer Mannschaft gemessen an der NHL Erfahrung stetig zugenommen hat, was Fischer in dieser Auswertung sicherlich zu Gute kommt. Dass die gezeigten Zahlen allerdings NUR ein Resultat höherer Qualität sein sollen, wage ich zu bezweifeln. Man darf nicht vergessen, dass auch andere Nationen sich weiterentwickelt haben. Der tatsächliche Einfluss von Qualität auf das Abschneiden der Schweizer Nationalmannschaft ist eine spannende Frage für ein andermal.
 
 <br>
 
@@ -155,7 +157,7 @@ Patrick Fischer versagt trotz Abwesenheit von NHL-Spielern an Olympischen Spiele
 ## Äpfel und Birnen
 
 
-Für den weiteren Verlauf der Analyse werden nur noch Resultate von Weltmeisterschaften berücksichtigt. Das Fehlen von NHL Stars an Olympischen Spielen ab 2018 und eine kleine Stichprobengrösse pro Trainer machen einen Vergleich schwierig und man würde vermutlich Äpfel mit Birnen vergleichen. Zugegeben, diese Problematik ist bei Weltmeisterschaften zwar auch vorhanden, jedoch nicht im gleichen Ausmass. NHL Spieler waren schon immer bei Weltmeisterschaften dabei (auch wenn nicht immer in gleicher Menge und Qualität) und die Stichprobengrösse pro Trainer ist vertretbarer. 
+Für den weiteren Verlauf der Analyse werden nur noch Resultate von Weltmeisterschaften berücksichtigt. Das Fehlen von NHL Stars an Olympischen Spielen ab 2018 und eine kleine Stichprobengrösse pro Trainer machen einen Vergleich schwierig. Man würde vermutlich Äpfel mit Birnen vergleichen. Zugegeben, diese Problematik ist bei Weltmeisterschaften zwar auch vorhanden, jedoch nicht im gleichen Ausmass. NHL Spieler waren im betrachteten Zeitraum immer bei Weltmeisterschaften dabei (auch wenn nicht immer in gleicher Menge und Qualität) und die Stichprobengrösse pro Trainer ist vertretbarer. 
 
 <br>
 <br>
@@ -163,7 +165,7 @@ Für den weiteren Verlauf der Analyse werden nur noch Resultate von Weltmeisters
 
 ## The Big Red Round-Robin Machine?
 
-In einem IIHF [Power Ranking](https://www.iihf.com/en/events/2023/wm/news/45048/power_rankings_(5)) an der diesjährigen Weltmeisterschaft wurde die Schweizer Nati in Anspielung auf das regelmässige Viertelfinal Ausscheiden nach starken Vorrunden etwas unschmeichelhaft als "The Big Red Round-Robin Machine" bezeichnet. Was ist aber dran an dieser Aussage? Und war das eigentlich schon immer so? Schauen wir uns das Abschneiden der Nati an Weltmeisterschaften mal etwas genauer an: 
+In einem IIHF [Power Ranking](https://www.iihf.com/en/events/2023/wm/news/45048/power_rankings_(5)) an der diesjährigen Weltmeisterschaft wurde die Schweizer Nati in Anspielung auf das regelmässige Viertelfinal Ausscheiden nach starken Vorrunden etwas unschmeichelhaft als "The Big Red Round-Robin Machine" bezeichnet. Was ist aber dran an dieser Bezeichnung? Und war das eigentlich schon immer so? Schauen wir uns das Abschneiden der Nati an Weltmeisterschaften mal etwas genauer an: 
 
 <br>
 
@@ -249,7 +251,7 @@ print(p1)
 <br>
 
 Mit Ralph Krueger an der Bande erreicht man jedes zweite Mal den Viertelfinal und feierte an der Heim WM 1998 sogar den Einzug ins keine Final.
-Unter Sean Simpson kann man in dieser Hinsicht sogar schon fast von einem Rückschritt sprechen. Dreimal war schon in der Vorrunde schluss. Allerdings feierte die Nati unter Simpson mit Silber an der WM 2013 das erste Mal seit 1953 wieder eine WM Medaille. Unter Patrick Fischer erreichte die Nati praktisch immer den Viertelfinal mit der Krönung 2018, als man die zweite Silbermedaille der Neuzeit gewann. Der (Miss)Erfolg der Nati lässt sich aber auch an den jeweiligen WM Schlussrängen messen:
+Unter Sean Simpson kann man in dieser Hinsicht sogar schon fast von einem Rückschritt sprechen. Dreimal war schon in der Vorrunde schluss. Allerdings feierte die Nati unter Simpson mit Silber an der WM 2013 das erste Mal seit 1953 wieder eine WM Medaille. Unter Patrick Fischer erreichte die Nati praktisch immer den Viertelfinal mit der Krönung 2018, als man die zweite Silbermedaille der Neuzeit gewann. Der (Miss)Erfolg der Nati lässt sich auch an den jeweiligen WM Schlussrängen messen:
 
 <br>
 
@@ -311,7 +313,9 @@ print(p2)
 
 <br>
 
-Unter Ralph Krueger schwebte die Schweiz mehrheitlich aber dafür stabil um den 8. Schlussrang herum. Unter Sean Simpson kam bezüglich Schlussrang etwas Unruhe ins Team. Zwei Ausreisser nach oben aber eben auch drei Abschlüsse auf Platz 9 oder darunter prägen seine Zeit. Unter Patrick Fischer schaffte man den Sprung über die Top 8 Grenze dann erstmals mehrfach hintereinander. Mit 5 Platzierungen in den Top 6 aus 7 Turnieren scheint man erstmals einen Schritt nach vorne gemacht zu haben. Der Grosse Exploit blieb aber trotz vielen Viertefinal Teilnahmen auch hier mehrheitlich aus. Ausserdem gilt es wiederum etwas zu relativieren. Einerseits aus zuvor bereits genannten Qualitätsgründen und andererseits weil Russland seit der WM 2022 von Turnieren ausgeschlossen ist. 
+Unter Ralph Krueger schwebte die Schweiz mehrheitlich aber dafür stabil um den achten Schlussrang herum. Unter Sean Simpson kam bezüglich Schlussrang etwas Unruhe ins Team. Zwei Ausreisser nach oben aber eben auch drei Abschlüsse auf Platz neun oder darunter prägen seine Zeit. Unter Patrick Fischer schaffte man den Sprung über die Top 8 Grenze dann erstmals mehrfach hintereinander. Mit fünf Platzierungen in den Top 6 aus sieben Turnieren scheint man erstmals einen Schritt nach vorne gemacht zu haben. Der grosse Exploit blieb aber auch unter Fischer mehrheitlich aus. 
+
+Und auch hier gilt es wiederum etwas zu relativieren. Einerseits aus zuvor bereits genannten Qualitätsgründen und andererseits weil Russland seit der WM 2022 von Turnieren ausgeschlossen ist. 
 
 <br>
 
@@ -320,7 +324,7 @@ Unter Ralph Krueger schwebte die Schweiz mehrheitlich aber dafür stabil um den 
 <ul>
 <li>
 Ein regelmässiges Ausscheiden im Viertelfinal ist für die Schweizer Nati kein neuer Trend sondern schon fast Tradition</li>
-<li>Der Titel "Big Red Round-Robing Machine" trifft vorallem auf die jüngste Vergangenheit zu</li>
+<li>Der Titel "Big Red Round-Robing Machine" trifft allerdings vorallem auf die jüngste Vergangenheit zu</li>
 </ul>
 </div>
 
@@ -330,7 +334,7 @@ Ein regelmässiges Ausscheiden im Viertelfinal ist für die Schweizer Nati kein 
 
 ## Die Angst vor dem Viertelfinal
 
-Die zuvor gezeigte Grafik zeigt auf, warum die Nati vermutlich mehrheitlich nur schlechte Erinnerungen an Viertelfinal Spiele haben dürfte. Seit dem Aufstieg in die Top Division hat das Team an Weltmeisterschaften 15 Viertelfinals gespielt und nur deren 2 gewonnen. Nemen wir die Viertelfinal Begegnungen an Weltmeisterschaften mal etwas genauer unter die Luppe:
+Die zuvor gezeigte Grafik zeigt auf, warum die Nati vermutlich mehrheitlich nur schlechte Erinnerungen an Viertelfinal Spiele haben dürfte. Seit dem Aufstieg in die Top Division hat das Team an Weltmeisterschaften 15 Viertelfinals gespielt und nur deren zwei gewonnen. Nehmen wir die Viertelfinal Begegnungen an Weltmeisterschaften mal etwas genauer unter die Luppe:
 
 <br> 
 
@@ -371,11 +375,24 @@ quarterFinalResults%>%
 
 ```
 <br> 
+
+Die Schweiz spielte im Viertelfinal mehrheitlich gegen in der Weltrangliste vor ihr platzierte Teams. Nur in zwei Begegnungen gegen Deutschland (2010 und 2023) war die Schweiz höher platziert. Viele Spiele waren, zumindest resultatmässig, knapp. Aus 15 anläufen ging das Spiel sechsmal mit zwei Toren und viermal mit nur einem Tor Differenz verloren. Bei den einzigen zwei Siegen schoss man nur ein Tor mehr als der Gegner. Höhere Niederlagen mit mindestens drei Toren Differenz gab es insgesamt dreimal. 
+
+<br> 
+
+<div class="midsummary">
+<p>**Zwischenfazit:**</p>
+<ul>
+<li>Die Schweiz verlor eine Mehrheit ihrere Viertelfinal Spiele gemessen am Schlussresultat nur knapp</li>
+</ul>
+</div>
+
+<br> 
 <br> 
 
 ## Spielanteile lügen nicht, oder doch?
 
-Klar, im Sport zählt am Schluss nur Sieg oder Niederlage. Man darf sich aber schon die Frage stellen, hätte die Schweiz angesichts dieser Viertelfinal Resultate nicht ein oder zwei Spiele mehr gewinnen können/müssen? Da gab es ja schon das einte oder andere knappe Spiel. Spielanteile können uns hier einen Aufschluss darüber geben, ob die Schweiz jeweils verdient als Verliere vom Eis gegangen ist. Um die Spielanteile zu ermitteln wird eine vereinfachte Annahme getroffen: Die Spielanteile wiederspiegeln sich im Schussverhältnis der Teams wieder. Somit gehen wir davon aus, dass das Team mit mehr Schüssen auf das gegnerische Tor für gewöhnlich auch als Sieger vom Eis geht. Natürlich handelt es sich hier um eine Heuristik, welche der Realität nicht immer Stand hält. Auf Grund der dünnen, zugänglichen Datenlage müssen wir uns aber leider damit zufrieden geben: 
+Klar, im Sport zählt am Schluss nur Sieg oder Niederlage. Man darf sich aber schon die Frage stellen, hätte die Schweiz angesichts dieser Viertelfinal Resultate nicht ein oder zwei Spiele mehr gewinnen können/müssen? Die beobachteten Spielanteile können uns Aufschluss darüber geben, ob die Schweiz jeweils verdient als Verlierer vom Eis gegangen ist. Um die Spielanteile zu ermitteln wird eine vereinfachte Annahme getroffen: Die Spielanteile wiederspiegeln sich im Schussverhältnis der Teams wieder. Somit gehen wir davon aus, dass das Team mit mehr Schüssen auf das gegnerische Tor für gewöhnlich auch als Sieger vom Eis geht. Natürlich handelt es sich hier um eine Heuristik und die Realität wird dieser Annahme nicht immer gerecht. Die Annahme verliert dadurch aber nicht grundsätzlich ihre Validität, da sich die Wahrscheinlichkeit ein Spiel zu gewinnen mit jedem Schuss erhöht: 
 
 <br> 
 
@@ -438,7 +455,7 @@ p3<-ggplot()+
     plot.title.position = "plot",  # title positon determined relative to whole plot
     plot.subtitle = element_text(hjust = 0.5, size=large),
     legend.title = element_blank(),
-    legend.key.height = unit(57, "pt"),
+    legend.key.height = unit(55, "pt"),
     legend.margin = margin(-5,0,0,0),
     legend.box.margin = margin(0,0,0,-10),
     panel.grid.minor.x = element_blank(),
@@ -459,13 +476,15 @@ print(p3)
 
 <br>
 
-Die Schweiz war in nur 3 Spielen (2010, 2022, 2023) die spielbestimmende Mannschaft. Alle 3 Spiele gingen jedoch verloren. In 3 weiteren Spielen (2013, 2015, 2017) war das Spiel sehr ausgeglichen aber nur in einem davon gab es den besseren Ausgang für die Schweiz. In den 6 verbleibenden Spielen (2003, 2007, 2008, 2018, 2019, 2021) war die Schweiz spielerisch unterlegen. Immerhin resultiere daraus einen Sieg. Im Grossen und Ganzen lässt sich sagen, dass die Schweiz Mühe hat im Viertelfinal ihr Spiel aufzuziehen. Und wenn sie es doch tut oder gut mit dem Gegner mit hält, schaut dabei zu wenig raus. Es gibt allerdings einen Lichtblick. Die Schweiz hat es in den letzten zwei Jahren geschafft, das Spiel besser zu kontrollieren (trotz äusserst schmerzhaften Niederlagen). Mit etwas glück könnte so ein Spiel auch mal kippen, womit wir auch schon bei der letzten Analyse angekommen wären.
+Die Schweiz war in nur drei Spielen (2010, 2022, 2023) die spielbestimmendere Mannschaft. Alle drei Spiele gingen jedoch verloren. In drei weiteren Spielen (2013, 2015, 2017) war das Spiel sehr ausgeglichen aber nur in einem davon gab es den besseren Ausgang für die Schweiz. In den sechs verbleibenden Spielen (2003, 2007, 2008, 2018, 2019, 2021) war die Schweiz spielerisch unterlegen. Immerhin resultiere aus einem dieser Spiele einen Sieg. Es scheint so, als dass die Schweiz Mühe hat im Viertelfinal ihr Spiel aufzuziehen. Und wenn sie es doch tut oder gut mit dem Gegner mithält, schaut dabei zu wenig raus. Es gibt allerdings einen Lichtblick. Die Schweiz hat es in den letzten zwei Jahren geschafft, das Spiel besser zu kontrollieren (trotz äusserst schmerzhaften Niederlagen). Mit etwas Glück könnte so ein Spiel auch mal kippen
+
+<br>
 
 <div class="midsummary">
 <p>**Zwischenfazit:**</p>
 <ul>
 <li>
-Die Schweiz bekundet in Viertelfinal Spielen regelmässig mühe die Spielkontrolle zu übernehmen</li>
+Die Schweiz bekundet in Viertelfinal Spielen regelmässig Mühe die Spielkontrolle zu übernehmen</li>
 </ul>
 </div>
 
@@ -474,7 +493,7 @@ Die Schweiz bekundet in Viertelfinal Spielen regelmässig mühe die Spielkontrol
 
 ## Geduld ist der Schlüssel zum Glück
 
-Das Thema Glück und Pech ist im Hockey allgegenwärtig. Um eine Aussage darüber machen zu können, ob ein Spiel glücklich gewonnen oder unglücklich verloren wurde, schauen wir uns die PDO Statistik an. Sie berechnet sich aus der Summe der Schusseffizienz und der Fangquote eines Teams. Da jeder Schuss entweder zu einem Tor oder einem Save führt, ergibt sich über ein ganzes Spiel gesehen unweigerlich einen PDO von 100. Das führt aus statistischer Sicht zu einer schönen Eigenschaft: Alle Mannschaften bewegen sich im Schnitt auf einen Wert von 100 zu (auch bekannt als "Regression To The Mean" für alle Statistik Fans da draussen). Ein Wert über 100 bedeutet also, dass ein Team tendenziell glücklich aggiert, ein PDO unter 100 hingegen weist auf Pech hin. Für mehr Infos zum PDO empfehle ich euch diesen [Artikel](https://medium.com/hockey-stats/advanced-hockey-stats-101-pdo-part-3-of-4-d3f319f2e1f1)). Was sagt also die PDO Statistik der Schweizer Leistungen im Viertelfinal?
+Das Thema Glück und Pech ist im Hockey allgegenwärtig. Um eine Aussage darüber machen zu können, ob ein Spiel glücklich gewonnen oder unglücklich verloren wurde, schauen wir uns die PDO Statistik an. Sie berechnet sich aus der Summe der Schusseffizienz und der Fangquote eines Teams. Da jeder Schuss entweder zu einem Tor oder einem Save führt, ergibt sich über ein ganzes Spiel gesehen unweigerlich einen PDO von 100. Das führt aus statistischer Sicht zu einer schönen Eigenschaft: Alle Mannschaften bewegen sich im Schnitt auf einen Wert von 100 zu (diesen Effekt nennt man "Regression To The Mean" für alle Statistik Fans da draussen). Ein Wert über 100 bedeutet also, dass ein Team tendenziell glücklich aggiert, ein PDO unter 100 hingegen weist auf Pech hin. Für mehr Infos zum Thema PDO im Eishockey empfehle ich euch diesen [Artikel](https://medium.com/hockey-stats/advanced-hockey-stats-101-pdo-part-3-of-4-d3f319f2e1f1). Was sagt also der PDO zur Schweizer Leistungen im Viertelfinal?
 
 <br>
 
@@ -535,14 +554,20 @@ print(p4)
 
 <br>
 
-Die Schweiz hatte gerade mal in 4 von 12 Spielen einen PDO von über 100. Wenig überraschend gehören da auch die zwei gewonnenen Viertelfinal Spiele 2013 und 2018 dazu. In den Jahren 2019 und 2021 konnte man trotz etwas mehr Glück im Duell schlussendlich nicht reüssieren. In den restlichen Spielen war man weit bis sehr weit von einem PDO von 100 entfernt, was auf viel Pech hindeutet. In den Entscheidenend Spielen schien die Schusseffizienz und/oder die Fangquote oft nicht auf dem gewünschten Niveau zu sein. Das gilt auch für die Niederlagen an dieser und der letztjährigen Weltmeisterschaft. 
+Die Schweiz hatte gerade mal in vier von zwölf Spielen einen PDO von über 100. Wenig überraschend gehören da auch die zwei gewonnenen Viertelfinal Spiele 2013 und 2018 dazu. In den Jahren 2019 und 2021 konnte man trotz etwas mehr Glück im Viertelfinal schlussendlich nicht reüssieren. In den restlichen Spielen war man weit bis sehr weit von einem PDO von 100 entfernt, was auf viel Pech hindeutet. In den Entscheidenend Spielen schien die Schusseffizienz und/oder die Fangquote oft nicht auf dem gewünschten Niveau zu sein. Das gilt auch für die Niederlagen an dieser und der letztjährigen Weltmeisterschaft. 
 
-Die Wahrscheinlichkeit für dieses PDO Muster lässt sich auch berechnen. Keine Angst, ich erspare euch die mathematischen Details. Es ist einfach wichtig zu wissen, dass der PDO um den Wert 100 normalverteilt ist. Somit liegen 50% aller Beobachtungen unter 100 und 50% liegen darüber. Das bedeutet auch, dass ein Team in einem Spiel mit je einer 50% Wahrscheinlichkeit einen PDO über oder unter 100 erreichen wird (wir ignorieren jetzt mal, dass theoretisch auch einen PDO von genau 100 möglich wäre). Die Ausgangslage entspricht also einem Bernoulli Experiment mit den zwei möglichen Ereignissen:
+Wir können sogar berechnen, wie wahrscheinlich das beobachtete PDO Muster ist. Aber keine Angst, ich erspare euch die mathematischen Details. Es ist einfach wichtig zu wissen, dass der PDO um den Wert 100 normalverteilt ist. Somit liegen 50% aller Beobachtungen unter 100 und 50% liegen darüber. Das bedeutet auch, dass ein Team in einem Spiel mit je einer 50% Wahrscheinlichkeit einen PDO über oder unter 100 erreichen wird (wir ignorieren jetzt mal, dass theoretisch auch ein PDO von genau 100 möglich wäre). Die Ausgangslage entspricht also einem Bernoulli Experiment mit den zwei möglichen Ereignissen:
 
 - Erfolg = "Das Team hat Glück" = PDO>100
 - Kein Erfolg = "Das Team hat Pech" = PDO<100
 
-Somit haben wir alle Voraussetzungen geschaffen, um zu Berechnen, wie wahrscheinlich es ist, wie die Schweiz in 12 Anläufen nur maximal 4 mal erfolgreich zu sein bzw. Glück zu haben (wenn ihr euch doch den mathematischen Grundlagen aussetzen wollt, könnt ihr gerne [hier](https://studyflix.de/statistik/bernoulli-formel-1789) vorbeischauen). Das Resultat: `r  paste0(100*round(pbinom(4,12,0.5), 3),"%")`. Ergo, in nur etwa einem von fünf Fällen kommt es vor, dass ein Team bei 12 Viertelfinal Teilnahmen gerade mal 4 oder weniger Spiele mit einem PDO über 100 abschliesst. Aus statistischer Sicht sollte sich die Schweiz also darauf verlassen können, dass sich ihr PDO in Viertelfinal Spielen wieder gegen oben bewegt und somit auch wieder mehr Glück im Spiel ist. Damit steigt dann hoffentlich auch die Chance auf einen lang ersehnten Halbfinaleinzug. 
+Somit haben wir alle Voraussetzungen geschaffen, um zu Berechnen, wie wahrscheinlich es ist, wie die Schweiz in zwölf Anläufen nur maximal viermal erfolgreich zu sein bzw. Glück zu haben (wenn euch die Berechnungsweise dennoch interessiert schaut mal [hier](https://studyflix.de/statistik/bernoulli-formel-1789) vorbei). Das ernüchternde Resultat:
+
+- Eine Wahrscheinlichkeit von **`r  paste0(100*round(pbinom(4,12,0.5), 3),"%")`**. 
+
+Was heisst das? In nur etwa einem von fünf Fällen kommt es vor, dass ein Team bei zwölf Viertelfinal Teilnahmen gerade mal vier oder weniger davon mit einem PDO über 100 abschliesst oder einfach gesagt, die Schweiz hat nicht nur einfach Pech sondern sie hat es auch etwas unwahrscheinlich oft und gehört damit zu den unteren 20% auf dem "Glück-O-meter". Aus statistischer Sicht sollte sich die Schweiz also darauf verlassen können, dass sich ihr PDO in Viertelfinal Spielen irgendwann wieder gegen oben korrigiert und somit auch mit mehr Glück im Spiel rechnen kann. Es gilt also, mit Geduld kommt Glück und so hoffentlich auch wieder einmal der lang ersehnte Halbfinaleinzug. 
+
+<br>
 
 
 <div class="midsummary">
@@ -559,9 +584,9 @@ Somit haben wir alle Voraussetzungen geschaffen, um zu Berechnen, wie wahrschein
 
 <div class="summary">
 
-<h2>Was haben wir gelernt?</h2>
+<h2>TLDR</h2>
 
-Die Schweizer Nati hat sich über die Jahre ständig weiterentwickelt und in vielerlei Hinsicht verbessert. Patrick Fischer hat daran sicher seinen Anteil, wie gross dieser ist lässt sich aber nicht abschliessend festlegen. Olympische und Viertelfinal Spiele waren seit dem Aufstieg hingegen schon immer ein rotes Tuch. Die Schweiz hatte Mühe ihr Spiel aufzuziehen und war dazu noch vom Pech verfolgt. Das Blatt wird sich aber wenden und die Schweiz sollte irgendwann wieder im Halbfinal stehen.
+Die Schweizer Nati hat sich über die Jahre ständig weiterentwickelt und in vielerlei Hinsicht verbessert. Patrick Fischer hat daran sicher seinen Anteil, wie gross dieser ist lässt sich aber nicht abschliessend festlegen. Olympische Spiele und Viertelfinals waren seit dem Aufstieg hingegen schon immer ein rotes Tuch für die Nati. Die Schweiz verlore viele Viertelfinal Spiele nur knapp, hatte Mühe ihr Spiel aufzuziehen und war dazu noch vom Pech verfolgt. Gerade das fehlende Glück sollte sich in Zukunft irgendwann wieder relativieren und dann liegt auch wiedermal ein Halbfinal drin.
 
 </div>
 
